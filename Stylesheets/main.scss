@@ -1,0 +1,161 @@
+$black-back: #1A1A1A;
+$black-one: #333333;
+$black-two: #4D4D4D;
+
+$clock-beige: #AFAEA0;
+$orange: #EE7C4B;
+
+/*
+ * Mixins
+*/
+
+@mixin animation( $str ) {
+  -webkit-animation: #{$str};
+  -moz-animation: #{$str};
+  -ms-animation: #{$str};
+  -o-animation: #{$str};
+  animation: #{$str};
+}
+@mixin center-me-horiz(){
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+/*
+ * Animation Keyframes
+*/
+
+@keyframes clockHandSpin {
+    from{
+        transform: rotate(0deg)
+    }
+    to{
+        transform: rotate(360deg);
+     }
+}
+
+body {
+    background-color: whitesmoke;
+}
+
+#app {
+    background-color: $black-back;
+    height: 750px;
+    width: 40%;
+    margin: 0 auto;
+    position: relative;
+}
+
+/*
+ * Animated clocks
+*/
+
+#clocks-container {
+    position: absolute;
+    top: 150px;
+    width: 100%;
+    height: 140px;
+    text-align: center;
+    .clock-minimized {
+        height: 120px;
+        width: 120px;
+        border-radius: 50%;
+        background-color: $black-one;
+        display: inline-block;
+        margin: 0 2%;
+        position: relative;
+    }
+    #clock-sec {
+        background-color: $clock-beige;
+    }
+}
+// clock hands
+.clock-hand {
+    height: 35px;
+    width: 3px;
+    background-color: white;
+    border-radius: 20px;
+    @include center-me-horiz();
+    bottom:58px;
+    transform-origin:center 32px;
+}
+
+/* Add these widh specific iteration counts depending on time after start timer has been clicked
+
+#clock-hand-min {
+    animation: clockHandSpin 60s linear 50ms infinite both;
+}
+#clock-hand-sec {
+    animation: clockHandSpin 1s linear 50ms infinite both;
+}
+
+*/
+
+/*
+ * Set Timer Form
+*/
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+
+
+/*
+ * Clock type buttons
+*/
+
+#clock-type-container {
+    width: 100%;
+    position: absolute;
+    bottom: 150px;
+}
+#clock-type {
+    width: 70%;
+    margin: 0 auto;
+    text-align: center;
+    button {
+        border: 0px;
+        border-radius: 20px;
+        padding: 10px 40px;
+    }
+    #btn-norm {
+        margin-right: 2%;
+        background-color: $orange;
+        color: white;
+    }
+    #btn-promo {
+        margin-left: 2%;
+        background-color: transparent;
+        border: 2px solid $orange;
+        color: white;
+    }
+}
+
+/*
+ * Bottom buttons: play reset stop resume
+*/
+.btn-bottom {
+    height: 5em;
+    position: absolute;
+    bottom: 0px;
+    border: 0px;
+    color: white;
+}
+
+#btn-start {
+    width: 100%;
+    background-color: $black-one;
+    color: white;
+}
+
+#btn-stop {
+    width: 50%;
+    background-color: $black-one;
+}
+#btn-reset {
+    left: 50%;
+    width: 50%;
+    background-color: $black-two;
+}

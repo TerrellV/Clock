@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Clock</title>
+
+    <link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.2/material.grey-deep_orange.min.css">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="stylesheets/main.css">
+    <script src="https://storage.googleapis.com/code.getmdl.io/1.0.2/material.min.js"></script>
+    <script type="text/javascript" src="javascripts/angular.min.js"></script>
+
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.2/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body ng-controller="timerController">
+    <!-- ng click that runs the function start time -->
+    <span style="font-size: 50px">{{ m }}m</span>
+    <span style="font-size: 50px">{{ s }}s</span>
+
+    <div id="app" class="mdl-shadow--6dp">
+
+        <!-- Entire Time for default timer -->
+        <form action="#" id="form-minutes">
+                <input class="" type="number" pattern="[.]" id="minutes" maxlength="2" title="Use numbers" />
+        </form>
+
+        <!-- animated clocks -->
+        <div id="clocks-container" class="">
+            <div id="clock-min" class="mdl-shadow--2dp clock clock-minimized">
+                <div id="clock-hand-min" class="clock-hand">
+                </div>
+            </div>
+            <div id="clock-sec" class="mdl-shadow--2dp clock clock-minimized">
+                <div id="clock-hand-sec" class="clock-hand">
+                </div>
+            </div>
+        </div>
+
+        <!-- clock type buttons  -->
+        <div id="clock-type-container" class="">
+            <div id="clock-type" class="">
+                <button id="btn-norm" type="button" name="button">Traditional</button>
+                <button id="btn-promo" type="button" name="button">Promodoro</button>
+            </div>
+        </div>
+
+        <!-- bottom action buttons -->
+        <div class="action-button">
+            <button ng-hide="running" id="btn-start" type="button" name="button" class="btn-bottom">START</button>
+            <div ng-show="running">
+                <button id="btn-stop" type="button" name="button" class="btn-bottom">STOP</button>
+                <button id="btn-reset" type="button" name="button" class="btn-bottom">RESET</button>
+                <div>
+                </div>
+            </div>
+
+
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+            <script type="text/javascript" src="javascripts/app.js"></script>
+            <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+</body>
+
+</html>
