@@ -37,9 +37,9 @@
         </div>
         <!-- Count down time  -->
         <div id="showTime-container" ng-show="running">
-            <h2>{{ displayHours }}<span>h</span></h2>
-            <h2>{{ displayMinutes }}<span>m</span></h2>
-            <h2>{{ displaySeconds }}<span>s</span></h2>
+            <h2 ng-hide="given.hours" >{{ displayHours }}<span>h</span></h2>
+            <h2 ng-hide="given.minutes">{{ displayMinutes }}<span>m</span></h2>
+            <h2 ng-hide="given.seconds">{{ displaySeconds }}<span>s</span></h2>
         </div>
 
         <!--Input Times for default timer -->

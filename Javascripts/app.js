@@ -8,6 +8,12 @@ app.controller('timerController', function($scope) {
         "seconds": 1000
     }
 
+    $scope.given = {
+        "hours": false,
+        "minutes": false,
+        "seconds": false
+    }
+
     var paused = false;
     var timeouts = [];
     var enteredProps;
@@ -58,11 +64,13 @@ app.controller('timerController', function($scope) {
             'minutes': $scope.displayMinutes,
             'seconds': $scope.displaySeconds
         }
+
         $scope.paused = false;
         paused = false;
         $scope.startTime( $scope.pausedValues );
         function delayResume () {
             $("#loading-inner").css("animation-play-state", "running");
+            $("#clock-hand-min").css("animation-play-state", "running");
         }
         var delayResumeID = setTimeout(delayResume, 700);
     }
@@ -70,7 +78,7 @@ app.controller('timerController', function($scope) {
     // DEFINE : begin timmer
     $scope.startTime = function( timeValues ) {
 
-        $(".clock-hand").css("animation-play-state", "running");
+        $("#clock-hand-sec").css("animation-play-state", "running");
 
         enteredProps = Object.getOwnPropertyNames($scope.time);
         var filteredProps = enteredProps.filter(function(prop) {
@@ -86,11 +94,23 @@ app.controller('timerController', function($scope) {
         $scope.displayMinutes = timeValues.minutes || 0;
         $scope.displaySeconds = timeValues.seconds || 0;
 
+        if($scope.displayHours === 0 ) {
+            $scope.given.hours = true;
+            console.log('only show minutes and seconds',$scope.given.hours);
+        }
+        // if hours and minutes === 0 only show seconds
+        if( $scope.displayHours === 0 && $scope.displayMinutes === 0 ) {
+            console.log('only show seconds');
+            $scope.given.hours = true;
+            $scope.given.minutes = true;
+        }
+
         function onEachSecondDo() {
 
             if ( paused ) {
                 return 'done'
             }
+
 
             if ($scope.displayHours === 0 && $scope.displayMinutes ===0 && $scope.displaySeconds === 0) {
                 $(".clock-hand").css("animation-play-state", "paused");
@@ -102,6 +122,11 @@ app.controller('timerController', function($scope) {
                 $scope.displayHours--;
             }
 
+            if( $scope.displayHours === 0 ) {
+                console.log('only show seconds');
+                $scope.given.hours = true;
+            }
+
             if ($scope.displaySeconds === 0) {
                 $scope.displaySeconds = 60;
                 $scope.displayMinutes--;
@@ -110,9 +135,13 @@ app.controller('timerController', function($scope) {
             $scope.$apply();
             console.log('h', $scope.displayHours, 'min', $scope.displayMinutes, 'sec', $scope.displaySeconds);
             ticker();
+
         }
 
         function ticker() {
+
+
+
             var timeoutID = window.setTimeout(onEachSecondDo, [1000]);
             timeouts.push(timeoutID);
         }
