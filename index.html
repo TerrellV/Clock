@@ -47,14 +47,17 @@
             <div id="time-input-container">
                 <input ng-model="time.hours" id="hour-input" class="time-input" type="number" placeholder="00" onkeypress="return isNumeric(event)" oninput="(maxLengthCheck(this))" maxlength="2" min="1" max="100" title="Use numbers" />
                 <div class="underline"></div>
+                <span class="input-lables">h</span>
             </div>
             <div id="time-input-container">
                 <input ng-model="time.minutes" id="minutes-input" class="time-input" type="number" placeholder="00" onkeypress="return isNumeric(event)" oninput="(maxLengthCheck(this))" maxlength="2" min="1" max="59" title="Use numbers" />
                 <div class="underline"></div>
+                <span class="input-lables">m</span>
             </div>
             <div id="time-input-container">
                 <input ng-model="time.seconds" id="seconds-input" class="time-input" type="number" placeholder="00" onkeypress="return isNumeric(event)" oninput="(maxLengthCheck(this))" maxlength="2" min="1" max="59" title="Use numbers" />
                 <div class="underline"></div>
+                <span class="input-lables">s</span>
             </div>
         </form>
 

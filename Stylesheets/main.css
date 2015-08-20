@@ -101,6 +101,11 @@ input[type=number]::-webkit-outer-spin-button {
   margin: 0 auto;
   position: relative; }
 
+.input-lables {
+  position: absolute;
+  bottom: 15px;
+  right: 0px; }
+
 .time-input {
   text-align: center;
   background-color: transparent;
@@ -152,7 +157,8 @@ input:focus {
     #showTime-container h2 span {
       font-family: "Roboto",sans-serif;
       font-size: 30px;
-      color: #CCCCCC; }
+      color: #CCCCCC;
+      padding-left: 10px; }
 
 /*
  * Loading line signalling how much time left
