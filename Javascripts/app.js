@@ -27,7 +27,13 @@ app.controller('timerController', function($scope) {
         $scope.paused = true;
         console.log($scope.displaySeconds,$scope.displayMinutes,$scope.displayHours);
         $("#loading-inner").css("animation-play-state", "paused");
-        $(".clock-hand").css("animation-play-state", "paused");
+        $("#clock-hand-min").css("animation-play-state", "paused");
+        $scope.bigHandS = {
+            "height": "60px",
+            "width": "6px",
+            "bottom": "95px",
+            "transform-origin": "center 57px"
+        }
 
         $("#btn-resume").attr('disabled','disabled');
         function delayResumeButton () {
@@ -37,6 +43,15 @@ app.controller('timerController', function($scope) {
     }
     // ON CLICK OF RESUME BUTTON
     $scope.resume = function() {
+
+        $scope.bigHandS = {
+            "height": "60px",
+            "width": "6px",
+            "bottom": "95px",
+            "transform-origin": "center 57px",
+            "animation": "clockHandSpin 1s linear 100ms infinite both"
+        }
+
         // build new object here to pass into timer function again with past values
         $scope.pausedValues = {
             'hours': $scope.displayHours,
@@ -124,7 +139,7 @@ app.controller('timerController', function($scope) {
             "width": "6px",
             "bottom": "95px",
             "transform-origin": "center 57px",
-            "animation": "clockHandSpin 60s linear 50ms infinite both"
+            "animation": "clockHandSpin 60s linear 100ms infinite both"
         };
         $scope.bigHandS = {
             "height": "60px",
