@@ -7,12 +7,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Clock</title>
 
+    <script type="text/javascript" src="javascripts/angular.min.js"></script>
     <link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.2/material.grey-deep_orange.min.css">
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="stylesheets/main.css">
     <script src="https://storage.googleapis.com/code.getmdl.io/1.0.2/material.min.js"></script>
-    <script type="text/javascript" src="javascripts/angular.min.js"></script>
 
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.2/html5shiv.js"></script>
@@ -21,31 +21,50 @@
 </head>
 
 <body ng-controller="timerController">
-    <!-- ng click that runs the function start time -->
-    <span style="font-size: 50px">{{ m }}m</span>
-    <span style="font-size: 50px">{{ s }}s</span>
 
     <div id="app" class="mdl-shadow--6dp">
 
-        <!-- Entire Time for default timer -->
-        <form action="#" id="form-minutes">
-                <input class="" type="number" pattern="[.]" id="minutes" maxlength="2" title="Use numbers" />
-        </form>
-
         <!-- animated clocks -->
-        <div id="clocks-container" class="">
-            <div id="clock-min" class="mdl-shadow--2dp clock clock-minimized">
-                <div id="clock-hand-min" class="clock-hand">
+        <div id="clocks-container" ng-style="clockContainer" class="">
+            <div id="clock-min" ng-style="bigClock" class="mdl-shadow--2dp clock clock-minimized">
+                <div id="clock-hand-min" ng-style="bigHandM" class="clock-hand">
                 </div>
             </div>
-            <div id="clock-sec" class="mdl-shadow--2dp clock clock-minimized">
-                <div id="clock-hand-sec" class="clock-hand">
+            <div id="clock-sec" ng-style="bigClock" class="mdl-shadow--2dp clock clock-minimized">
+                <div id="clock-hand-sec" ng-style="bigHandS" class="clock-hand">
                 </div>
             </div>
         </div>
+        <!-- Count down time  -->
+        <div id="showTime-container" ng-show="running">
+            <h2>{{ displayHours }}<span>h</span></h2>
+            <h2>{{ displayMinutes }}<span>m</span></h2>
+            <h2>{{ displaySeconds }}<span>s</span></h2>
+        </div>
+
+        <!--Input Times for default timer -->
+        <form action="#" id="timer" ng-hide="running">
+            <div id="time-input-container">
+                <input ng-model="time.hours" id="hour-input" class="time-input" type="number" placeholder="00" onkeypress="return isNumeric(event)" oninput="(maxLengthCheck(this))" maxlength="2" min="1" max="100" title="Use numbers" />
+                <div class="underline"></div>
+            </div>
+            <div id="time-input-container">
+                <input ng-model="time.minutes" id="minutes-input" class="time-input" type="number" placeholder="00" onkeypress="return isNumeric(event)" oninput="(maxLengthCheck(this))" maxlength="2" min="1" max="59" title="Use numbers" />
+                <div class="underline"></div>
+            </div>
+            <div id="time-input-container">
+                <input ng-model="time.seconds" id="seconds-input" class="time-input" type="number" placeholder="00" onkeypress="return isNumeric(event)" oninput="(maxLengthCheck(this))" maxlength="2" min="1" max="59" title="Use numbers" />
+                <div class="underline"></div>
+            </div>
+        </form>
+
+        <!-- loading line -->
+        <div ng-show="running" id="loading-outer" class="loading">
+            <div id="loading-inner" ng-class="{startLoad:startLoad}"class="loading"></div>
+        </div>
 
         <!-- clock type buttons  -->
-        <div id="clock-type-container" class="">
+        <div id="clock-type-container" class="" ng-hide="running">
             <div id="clock-type" class="">
                 <button id="btn-norm" type="button" name="button">Traditional</button>
                 <button id="btn-promo" type="button" name="button">Promodoro</button>
@@ -54,12 +73,15 @@
 
         <!-- bottom action buttons -->
         <div class="action-button">
-            <button ng-hide="running" id="btn-start" type="button" name="button" class="btn-bottom">START</button>
-            <div ng-show="running">
-                <button id="btn-stop" type="button" name="button" class="btn-bottom">STOP</button>
+            <button ng-hide="hideStart" ng-click="start()" id="btn-start" type="button" name="button" class="btn-bottom">START</button>
+            <div ng-show="hideStart">
+
+                <button ng-hide="paused" ng-click="pauseApp()" id="btn-pause" type="button" name="button" class="btn-bottom">PAUSE</button>
+
+                <button ng-click="resume()"ng-show="paused" id="btn-resume" type="button" name="button" class="btn-bottom">RESUME</button>
+
                 <button id="btn-reset" type="button" name="button" class="btn-bottom">RESET</button>
-                <div>
-                </div>
+
             </div>
 
 

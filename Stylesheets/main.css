@@ -1,3 +1,4 @@
+@import url(http://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900);
 /*
  * Mixins
 */
@@ -9,15 +10,29 @@
     transform: rotate(0deg); }
   to {
     transform: rotate(360deg); } }
+@keyframes loading {
+  from {
+    width: 0%; }
+  to {
+    width: 100%; } }
+/*
+ * Background
+*/
 body {
   background-color: whitesmoke; }
 
+/*
+ * App Container
+*/
 #app {
   background-color: #1A1A1A;
   height: 750px;
-  width: 40%;
-  margin: 0 auto;
-  position: relative; }
+  width: 90%;
+  max-width: 550px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); }
 
 /*
  * Animated clocks
@@ -26,7 +41,7 @@ body {
   position: absolute;
   top: 150px;
   width: 100%;
-  height: 140px;
+  height: 120px;
   text-align: center; }
   #clocks-container .clock-minimized {
     height: 120px;
@@ -50,23 +65,118 @@ body {
   bottom: 58px;
   transform-origin: center 32px; }
 
-/* Add these widh specific iteration counts depending on time after start timer has been clicked
-
-#clock-hand-min {
-    animation: clockHandSpin 60s linear 50ms infinite both;
-}
-#clock-hand-sec {
-    animation: clockHandSpin 1s linear 50ms infinite both;
-}
-
-*/
 /*
  * Set Timer Form
 */
+#timer {
+  left: 50%;
+  width: 252px;
+  position: absolute;
+  text-align: center;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  border-bottom: 2px solid #333333; }
+
 input[type=number]::-webkit-inner-spin-button,
 input[type=number]::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0; }
+
+::-webkit-input-placeholder {
+  color: rgba(80, 80, 80, 0.43); }
+
+:-moz-placeholder {
+  color: rgba(80, 80, 80, 0.43); }
+
+::-moz-placeholder {
+  color: rgba(80, 80, 80, 0.43); }
+
+:-ms-input-placeholder {
+  color: rgba(80, 80, 80, 0.43); }
+
+#time-input-container {
+  display: inline-block;
+  text-align: center;
+  width: 80px;
+  margin: 0 auto;
+  position: relative; }
+
+.time-input {
+  text-align: center;
+  background-color: transparent;
+  border: 0px;
+  color: #CCCCCC;
+  font-size: 50px;
+  font-family: "Roboto",sans-serif;
+  font-weight: 300;
+  outline: none;
+  width: 80px;
+  left: 20%; }
+
+.underline:after {
+  content: "";
+  background-color: #EE7C4B;
+  display: block;
+  width: 80px;
+  height: 3px;
+  width: 0%;
+  transition: width .5s ease;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%); }
+
+.time-input:focus ~ .underline:after {
+  width: 100%; }
+
+input:focus {
+  border: 0px; }
+
+/*
+ * Actual Timer To Display
+*/
+#showTime-container {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 30%;
+  width: 100%;
+  text-align: center; }
+  #showTime-container h2 {
+    display: inline-block;
+    font-family: "Roboto",sans-serif;
+    font-size: 70px;
+    font-weight: 300;
+    margin: 0;
+    color: #CCCCCC;
+    margin-left: 20px; }
+    #showTime-container h2 span {
+      font-family: "Roboto",sans-serif;
+      font-size: 30px;
+      color: #CCCCCC; }
+
+/*
+ * Loading line signalling how much time left
+*/
+.loading {
+  height: 3px;
+  bottom: 20%; }
+
+#loading-outer {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  background-color: #333333; }
+
+#loading-inner {
+  left: 0px;
+  width: 0px;
+  background-color: #EE7C4B;
+  -webkit-animation: loading linear both;
+  -moz-animation: loading linear both;
+  -ms-animation: loading linear both;
+  -o-animation: loading linear both;
+  animation: loading linear both; }
 
 /*
  * Clock type buttons
@@ -98,18 +208,28 @@ input[type=number]::-webkit-outer-spin-button {
  * Bottom buttons: play reset stop resume
 */
 .btn-bottom {
-  height: 5em;
+  height: 70px;
   position: absolute;
   bottom: 0px;
   border: 0px;
-  color: white; }
+  color: white;
+  font-size: 20px;
+  color: #CCCCCC;
+  font-family: "Roboto",sans-serif;
+  font-weight: 300; }
 
 #btn-start {
   width: 100%;
   background-color: #333333;
-  color: white; }
+  color: #CCCCCC;
+  font-family: "Roboto",sans-serif;
+  font-weight: 300; }
 
-#btn-stop {
+#btn-resume {
+  width: 50%;
+  background-color: #333333; }
+
+#btn-pause {
   width: 50%;
   background-color: #333333; }
 
