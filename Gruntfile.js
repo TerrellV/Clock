@@ -4,13 +4,13 @@ module.exports = function(grunt) {
         sass: {
             dist: {
                 files: {
-                    'stylesheets/main.css': 'stylesheets/main.scss'
+                    'styles/main.css': 'styles/main.scss'
                 }
             }
         },
         watch: {
             sass: {
-                files: ['stylesheets/*.scss','views/*.hjs'],
+                files: ['styles/*.scss','views/*.hjs'],
                 tasks: ['sass'],
                 options: {
                     livereload: true
@@ -28,9 +28,9 @@ module.exports = function(grunt) {
             default_options: {
                 files: {
                     src: [
-                        "stylesheets/*.css",
+                        "styles/*.css",
                         "*.html",
-                        "javascripts/*.js"
+                        "scripts/*.js"
                     ]
                 },
                 options: {
