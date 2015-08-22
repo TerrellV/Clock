@@ -472,15 +472,15 @@ input:focus {
 
 #btn-resume {
   width: 50%;
-  background-color: #4D4D4D; }
+  background-color: #333333; }
 
 #btn-pause {
   width: 50%;
-  background-color: #4D4D4D; }
+  background-color: #333333; }
 
 #btn-reset {
   left: 50%;
   width: 50%;
-  background-color: #666666; }
+  background-color: #333333; }
 
 /*# sourceMappingURL=main.css.map */
