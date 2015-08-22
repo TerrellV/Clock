@@ -18,20 +18,47 @@ app.controller('timerController', function($scope) {
     var timeouts = [];
     var enteredProps;
 
-    // ON CLICK OF START BUTTON
+
+    // Sets class of normal button to active / orange and pomo button to clear with border
+    $scope.isActive = true;
+    // ON CLICK OF START determine which to show
     $scope.start = function() {
-        $scope.hideStart = true;
-        $scope.running = true;
-        $scope.showRunningScreen();
-        // $scope.updateTime($scope.time);
-        $scope.startTime( $scope.time );
+        // if pomo is clicked
+        console.log($scope.isActive);
+        if ( $scope.isActive === false ){
+            console.log('run pomo');
+            $scope.given.seconds = false; // for ng-hide. Show seconds
+            $scope.hideStart = true;
+            $scope.hideTaskInput = true;
+            $scope.dontShowClockOptions = true;
+            $scope.showPomoScreen();
+            // initiate start with static values for 25 minutes
+            $scope.pomoVals = {
+                "hours": 0,
+                "minutes": 25,
+                "seconds": 0
+            }
+
+            $scope.startTime( $scope.pomoVals );
+        } else {
+            console.log('run normal');
+            $scope.dontShowClockOptions = true;
+            $scope.hideStart = true;
+            $scope.showInput = true;
+            $scope.running = true;
+            $scope.showTime = true;
+            $scope.showRunningScreen();
+            // animation for secdons hand
+            $("#clock-hand-sec").css("animation-play-state", "running");
+
+            $scope.startTime( $scope.time );
+        }
     }
 
     // ON CLICK OF STOP BUTTON
     $scope.pauseApp = function() {
         paused = true;
         $scope.paused = true;
-        console.log($scope.displaySeconds,$scope.displayMinutes,$scope.displayHours);
         $("#loading-inner").css("animation-play-state", "paused");
         $("#clock-hand-min").css("animation-play-state", "paused");
         $scope.bigHandS = {
@@ -72,27 +99,30 @@ app.controller('timerController', function($scope) {
             $("#loading-inner").css("animation-play-state", "running");
             $("#clock-hand-min").css("animation-play-state", "running");
         }
-        var delayResumeID = setTimeout(delayResume, 700);
+        var delayResumeID = setTimeout(delayResume, 400);
     }
 
     // DEFINE : begin timmer
     $scope.startTime = function( timeValues ) {
 
-        $("#clock-hand-sec").css("animation-play-state", "running");
+        console.log(timeValues);
 
-        enteredProps = Object.getOwnPropertyNames($scope.time);
+        enteredProps = Object.getOwnPropertyNames(timeValues);
         var filteredProps = enteredProps.filter(function(prop) {
-            return $scope.time[prop] !== 0;
+            return timeValues[prop] !== 0;
         });
-        $scope.time.totalMs = 0;
+
+        timeValues.totalMs = 0;
 
         filteredProps.map(function(prop) {
-            $scope.time.totalMs += $scope.time[prop] * multipliers[prop];
+            timeValues.totalMs += (timeValues[prop] * multipliers[prop]);
         });
 
         $scope.displayHours = timeValues.hours || 0;
         $scope.displayMinutes = timeValues.minutes || 0;
         $scope.displaySeconds = timeValues.seconds || 0;
+
+        console.log($scope.displaySeconds,$scope.displayMinutes,$scope.displayHours);
 
         if($scope.displayHours === 0 ) {
             $scope.given.hours = true;
@@ -100,7 +130,6 @@ app.controller('timerController', function($scope) {
         }
         // if hours and minutes === 0 only show seconds
         if( $scope.displayHours === 0 && $scope.displayMinutes === 0 ) {
-            console.log('only show seconds');
             $scope.given.hours = true;
             $scope.given.minutes = true;
         }
@@ -110,7 +139,6 @@ app.controller('timerController', function($scope) {
             if ( paused ) {
                 return 'done'
             }
-
 
             if ($scope.displayHours === 0 && $scope.displayMinutes ===0 && $scope.displaySeconds === 0) {
                 $(".clock-hand").css("animation-play-state", "paused");
@@ -123,7 +151,6 @@ app.controller('timerController', function($scope) {
             }
 
             if( $scope.displayHours === 0 ) {
-                console.log('only show seconds');
                 $scope.given.hours = true;
             }
 
@@ -139,18 +166,17 @@ app.controller('timerController', function($scope) {
         }
 
         function ticker() {
-
-
-
             var timeoutID = window.setTimeout(onEachSecondDo, [1000]);
             timeouts.push(timeoutID);
         }
 
         ticker();
 
-        // give loading bar an animation duration
-        $("#loading-inner").css("animation-duration", $scope.time.totalMs +'ms');
-
+        if ( $scope.showTasks !== true ) {
+            console.log(timeValues.totalMs);
+            // give loading bar an animation duration
+            $("#loading-inner").css("animation-duration", timeValues.totalMs +'ms');
+        }
     }
 
     // DEFINE on click of start - set css -
@@ -159,10 +185,8 @@ app.controller('timerController', function($scope) {
         $scope.clockContainer = {
             "top": "130px"
         };
-        $scope.bigClock = {
-            "height": "200px",
-            "width": "200px"
-        };
+        // adding a class of big clock
+        $scope.bigClock = 'bigClocks';
         $scope.bigHandM = {
             "height": "60px",
             "width": "6px",
@@ -179,7 +203,85 @@ app.controller('timerController', function($scope) {
         };
     }
 
+    // functions and content specific for task list functionality
+    $scope.taskList = [];
+
+    $scope.updateTasks = function ( taskInput ) {
+        console.log(taskInput);
+        if ( $scope.taskList.length >= 3) {
+            $scope.taskInput = undefined;
+            console.log('ERROR use only three tasks');
+            alert('Lets just stick to three tasks for now');
+        } else if ( taskInput !== undefined ) {
+            $scope.taskList.push({'text': taskInput});
+            $scope.taskInput = undefined;
+        }  else {alert('Your task was Blank')}
+
+    }
+    $scope.delete = function ( index ) {
+        $scope.taskList.splice( index, 1);
+    }
+
+
+    // functions for pomodoro clock specificically
+    $scope.clockShow = function ( type ) {
+        $scope.taskTitle = 'Add a Task Below';
+        if ( type === 'pomodoro' ){
+            $scope.clockContainer = {
+                "top": "110px"
+            };
+            $scope.moveTimeContainer = {
+                "top": "270px"
+            }
+            $scope.showTasks = true;
+            $scope.showTime = true;
+            $scope.showInput = true;
+            $scope.given.hours = true;
+            $scope.displayMinutes = 25;
+            $scope.given.seconds = true;
+            $scope.isActive = false;
+        } else {
+            $scope.isActive = true;
+            $scope.traditional = true;
+        }
+    }
+
+    // function to initiate actions when pomo timer is clicked
+    // starts thigns like the clock animations, makes clocks larger, move things down
+    $scope.showPomoScreen = function(){
+        $scope.taskTitle = 'To-do List';
+        $scope.bigClock = 'bigClocks';
+        $scope.clockContainer = {
+            "top": "150px"
+        };
+        $scope.moveTimeContainer = {
+            "top": "370px"
+        }
+        $scope.bigHandM = {
+            "height": "60px",
+            "width": "6px",
+            "bottom": "95px",
+            "transform-origin": "center 57px",
+            "animation": "clockHandSpin 60s linear 100ms infinite both"
+        };
+        $scope.bigHandS = {
+            "height": "60px",
+            "width": "6px",
+            "bottom": "95px",
+            "transform-origin": "center 57px",
+            "animation": "clockHandSpin 1s linear 50ms infinite both"
+        };
+        $scope.moveTasksDown = {
+            "bottom": "100px"
+        }
+    }
+
 });
+
+
+
+
+
 
 // limit input of text to two characters and only numbers
 function maxLengthCheck(object) {

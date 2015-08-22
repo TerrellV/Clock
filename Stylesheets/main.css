@@ -1,3 +1,4 @@
+@import url(https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css);
 @import url(http://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900);
 /*
  * Mixins
@@ -19,20 +20,58 @@
  * Background
 */
 body {
-  background-color: whitesmoke; }
+  background-color: #4D4D4D; }
 
 /*
  * App Container
 */
 #app {
   background-color: #1A1A1A;
-  height: 750px;
+  height: 780px;
   width: 90%;
   max-width: 550px;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%); }
+
+#tab-container {
+  position: relative;
+  top: 0px;
+  height: 100px;
+  margin: 0;
+  border-bottom: 1px solid; }
+  #tab-container #tab-stopwatch {
+    float: right; }
+  #tab-container .tab-title {
+    margin: 0px;
+    display: inline-block;
+    width: 275px;
+    position: relative;
+    height: 100%; }
+    #tab-container .tab-title h1 {
+      margin: 0px;
+      font-family: "Roboto",sans-serif;
+      font-size: 30px;
+      font-weight: 300;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%); }
+      #tab-container .tab-title h1:after {
+        content: '';
+        display: block;
+        height: 2px;
+        position: relative;
+        top: 32px;
+        background-color: #EE7C4B;
+        width: 0%;
+        margin: 0 auto;
+        transition: width .5s ease; }
+    #tab-container .tab-title:hover > h1:after {
+      width: 100%; }
+  #tab-container .tab-title-active {
+    color: #CCCCCC; }
 
 /*
  * Animated clocks
@@ -42,7 +81,12 @@ body {
   top: 150px;
   width: 100%;
   height: 120px;
-  text-align: center; }
+  text-align: center;
+  -webkit-transition: all 500ms ease-in-out;
+  -moz-transition: all 500ms ease-in-out;
+  -ms-transition: all 500ms ease-in-out;
+  -o-transition: all 500ms ease-in-out;
+  transition: all 500ms ease-in-out; }
   #clocks-container .clock-minimized {
     height: 120px;
     width: 120px;
@@ -50,9 +94,18 @@ body {
     background-color: #333333;
     display: inline-block;
     margin: 0 2%;
-    position: relative; }
+    position: relative;
+    -webkit-transition: height 500ms ease-in-out, width 500ms ease-in-out;
+    -moz-transition: height 500ms ease-in-out, width 500ms ease-in-out;
+    -ms-transition: height 500ms ease-in-out, width 500ms ease-in-out;
+    -o-transition: height 500ms ease-in-out, width 500ms ease-in-out;
+    transition: height 500ms ease-in-out, width 500ms ease-in-out; }
   #clocks-container #clock-sec {
     background-color: #AFAEA0; }
+
+.bigClocks {
+  height: 200px !important;
+  width: 200px !important; }
 
 .clock-hand {
   height: 35px;
@@ -63,7 +116,12 @@ body {
   left: 50%;
   transform: translateX(-50%);
   bottom: 58px;
-  transform-origin: center 32px; }
+  transform-origin: center 32px;
+  -webkit-transition: all 500ms ease-in-out;
+  -moz-transition: all 500ms ease-in-out;
+  -ms-transition: all 500ms ease-in-out;
+  -o-transition: all 500ms ease-in-out;
+  transition: all 500ms ease-in-out; }
 
 /*
  * Set Timer Form
@@ -122,9 +180,12 @@ input[type=number]::-webkit-outer-spin-button {
   content: "";
   background-color: #EE7C4B;
   display: block;
-  width: 80px;
-  height: 3px;
+  height: 2px;
   width: 0%;
+  -webkit-transition: width .5s ease;
+  -moz-transition: width .5s ease;
+  -ms-transition: width .5s ease;
+  -o-transition: width .5s ease;
   transition: width .5s ease;
   position: absolute;
   left: 50%;
@@ -145,11 +206,16 @@ input:focus {
   transform: translateX(-50%);
   bottom: 30%;
   width: 100%;
-  text-align: center; }
+  text-align: center;
+  -webkit-transition: all .5s ease;
+  -moz-transition: all .5s ease;
+  -ms-transition: all .5s ease;
+  -o-transition: all .5s ease;
+  transition: all .5s ease; }
   #showTime-container h2 {
     display: inline-block;
     font-family: "Roboto",sans-serif;
-    font-size: 70px;
+    font-size: 60px;
     font-weight: 300;
     margin: 0;
     color: #CCCCCC;
@@ -164,7 +230,7 @@ input:focus {
  * Loading line signalling how much time left
 */
 .loading {
-  height: 3px;
+  height: 6px;
   bottom: 20%; }
 
 #loading-outer {
@@ -182,7 +248,161 @@ input:focus {
   -moz-animation: loading linear both;
   -ms-animation: loading linear both;
   -o-animation: loading linear both;
-  animation: loading linear both; }
+  animation: loading linear both;
+  animation-delay: 1s; }
+
+/*
+ * Tasks to complete
+*/
+#tasks-container {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 170px;
+  height: 230px;
+  width: 352px;
+  -webkit-transition: all .4s ease;
+  -moz-transition: all .4s ease;
+  -ms-transition: all .4s ease;
+  -o-transition: all .4s ease;
+  transition: all .4s ease; }
+
+#tasks-title {
+  height: 40px;
+  position: relative; }
+  #tasks-title h3 {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    margin: 0;
+    color: #CCCCCC;
+    letter-spacing: 1px;
+    font-family: 'Roboto',sans-serif;
+    font-weight: 300;
+    font-size: 20px; }
+
+#input-btn-container {
+  position: relative;
+  height: 70px;
+  width: 350px; }
+
+#inner-input-container {
+  height: 40px;
+  position: absolute;
+  top: 10px;
+  display: inline-block;
+  width: 220px;
+  float: right; }
+
+#task-input {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background-color: transparent;
+  height: 40px;
+  width: 220px;
+  border: 0px;
+  font-size: 16px;
+  font-family: "Roboto",sans-serif;
+  font-weight: 400;
+  color: #CCCCCC;
+  outline: none;
+  border-bottom: 1px solid #333333; }
+
+.underlineTask:after {
+  content: '';
+  display: block;
+  width: 0px;
+  left: 70px;
+  background-color: #EE7C4B;
+  height: 2px;
+  -webkit-transition: width .5s ease;
+  -moz-transition: width .5s ease;
+  -ms-transition: width .5s ease;
+  -o-transition: width .5s ease;
+  transition: width .5s ease;
+  margin: 0 auto;
+  bottom: 0px;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%); }
+
+#task-input:focus ~ .underlineTask:after {
+  width: 100%; }
+
+#add-task-btn {
+  display: inline-block;
+  margin: 0 25px;
+  top: 18px;
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  background-color: #333333;
+  border: 0px;
+  color: #CCCCCC;
+  position: relative; }
+  #add-task-btn i {
+    font-size: 18px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    color: #666666; }
+
+.task-in-list {
+  list-style-type: none;
+  margin: 5px 0px;
+  position: relative;
+  left: -20px; }
+  .task-in-list label {
+    cursor: pointer;
+    position: relative; }
+    .task-in-list label:hover {
+      color: whitesmoke; }
+  .task-in-list input[type="checkbox"] {
+    display: none; }
+    .task-in-list input[type="checkbox"] + span:before {
+      position: relative;
+      content: '';
+      top: 10px;
+      background-color: transparent;
+      height: 25px;
+      width: 25px;
+      display: inline-block;
+      text-align: center;
+      margin-right: 20px;
+      background-image: url(../images/icons/unchecked-build.svg);
+      background-size: 80%;
+      background-repeat: no-repeat; }
+    .task-in-list input[type="checkbox"]:checked + span:before {
+      background-image: url(../images/icons/checked-build.svg);
+      background-size: 80%;
+      background-repeat: no-repeat; }
+    .task-in-list input[type="checkbox"]:checked + span {
+      text-decoration: line-through; }
+
+#remove-task-btn {
+  outline: none;
+  height: 18px;
+  width: 18px;
+  border-radius: 50%;
+  background-color: #333333;
+  border: 0px;
+  color: #CCCCCC;
+  position: relative;
+  top: 3px;
+  margin-right: 8px; }
+  #remove-task-btn:hover {
+    border: 1px solid whitesmoke; }
+  #remove-task-btn i {
+    font-size: 12px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    color: #666666; }
 
 /*
  * Clock type buttons
@@ -190,7 +410,7 @@ input:focus {
 #clock-type-container {
   width: 100%;
   position: absolute;
-  bottom: 150px; }
+  bottom: 100px; }
 
 #clock-type {
   width: 70%;
@@ -200,12 +420,19 @@ input:focus {
     border: 0px;
     border-radius: 20px;
     padding: 10px 40px; }
-  #clock-type #btn-norm {
-    margin-right: 2%;
+  #clock-type #normalButton {
+    margin-right: 2%; }
+  #clock-type #pomoButton {
+    margin-left: 2%; }
+  #clock-type .btn-active {
+    outline: none;
     background-color: #EE7C4B;
-    color: white; }
-  #clock-type #btn-promo {
-    margin-left: 2%;
+    color: white;
+    letter-spacing: 2px; }
+  #clock-type .btn-inactive {
+    padding: 8px 40px;
+    letter-spacing: 2px;
+    outline: none;
     background-color: transparent;
     border: 2px solid #EE7C4B;
     color: white; }

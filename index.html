@@ -12,6 +12,7 @@
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="stylesheets/main.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"rel="stylesheet">
     <script src="https://storage.googleapis.com/code.getmdl.io/1.0.2/material.min.js"></script>
 
     <!--[if lt IE 9]>
@@ -24,26 +25,37 @@
 
     <div id="app" class="mdl-shadow--6dp">
 
+        <!-- Tabs for switching between clock type -->
+        <div id="tab-container">
+            <div id='tab-timer'class="tab-title">
+                <h1 id="timer-text">Timer</h1>
+            </div>
+            <div id="tab-stopwatch" class="tab-title">
+                <h1 id="stopwatch-text">Stopwatch</h1>
+            </div>
+        </div>
+
         <!-- animated clocks -->
         <div id="clocks-container" ng-style="clockContainer" class="">
-            <div id="clock-min" ng-style="bigClock" class="mdl-shadow--2dp clock clock-minimized">
+            <div id="clock-min" ng-class="bigClock" class="mdl-shadow--2dp clock clock-minimized">
                 <div id="clock-hand-min" ng-style="bigHandM" class="clock-hand">
                 </div>
             </div>
-            <div id="clock-sec" ng-style="bigClock" class="mdl-shadow--2dp clock clock-minimized">
+            <div id="clock-sec" ng-class="bigClock" class="mdl-shadow--2dp clock clock-minimized">
                 <div id="clock-hand-sec" ng-style="bigHandS" class="clock-hand">
                 </div>
             </div>
         </div>
+
         <!-- Count down time  -->
-        <div id="showTime-container" ng-show="running">
+        <div id="showTime-container" ng-style="moveTimeContainer"ng-show="showTime">
             <h2 ng-hide="given.hours" >{{ displayHours }}<span>h</span></h2>
             <h2 ng-hide="given.minutes">{{ displayMinutes }}<span>m</span></h2>
             <h2 ng-hide="given.seconds">{{ displaySeconds }}<span>s</span></h2>
         </div>
 
         <!--Input Times for default timer -->
-        <form action="#" id="timer" ng-hide="running">
+        <form action="#" id="timer" ng-hide="showInput">
             <div id="time-input-container">
                 <input ng-model="time.hours" id="hour-input" class="time-input" type="number" placeholder="00" onkeypress="return isNumeric(event)" oninput="(maxLengthCheck(this))" maxlength="2" min="1" max="100" title="Use numbers" />
                 <div class="underline"></div>
@@ -63,14 +75,44 @@
 
         <!-- loading line -->
         <div ng-show="running" id="loading-outer" class="loading">
-            <div id="loading-inner" ng-class="{startLoad:startLoad}"class="loading"></div>
+            <div id="loading-inner" ng-class="{startLoad:startLoad}" class="loading"></div>
         </div>
 
+        <!-- Tasks to complete for pomordoro clock -->
+        <div id="tasks-container" ng-style="moveTasksDown" ng-show="showTasks">
+            <div id="tasks-title">
+                <h3>{{ taskTitle }}</h3>
+            </div>
+            <div id="input-btn-container" ng-hide="hideStart">
+                <button id="add-task-btn" type="button" ng-click="updateTasks( taskInput )" class="">
+                    <i class="material-icons">add</i>
+                </button>
+                <div id="inner-input-container" >
+                    <input id="task-input" type="text" maxlength="30" ng-model="taskInput" placeholder="Add task to list..."></inpute>
+                    <div class="underlineTask"></div>
+                </div>
+            </div>
+            <div>
+                <ul>
+                    <li class="task-in-list" ng-repeat="task in taskList">
+                        <button id="remove-task-btn" type="button" ng-click="delete($index)" class="delete-btn">
+                            <i class="material-icons">clear</i>
+                        </button>
+                        <label>
+                            <input class="checkbox" type="checkbox"/>
+                            <span>{{task.text}}</span>
+                        </label>
+                </li>
+                </ul>
+            </div>
+        </div>
+
+
         <!-- clock type buttons  -->
-        <div id="clock-type-container" class="" ng-hide="running">
+        <div id="clock-type-container" ng-hide="dontShowClockOptions">
             <div id="clock-type" class="">
-                <button id="btn-norm" type="button" name="button">Traditional</button>
-                <button id="btn-promo" type="button" name="button">Promodoro</button>
+                <button ng-class="{true:'btn-active', false: 'btn-inactive'}[isActive]" ng-click="clockShow('traditional')"  id="normalButton"type="button" name="button">Traditional</button>
+                <button ng-class="{true:'btn-inactive', false: 'btn-active'}[isActive]" ng-click="clockShow('pomodoro')" id="pomoButton" type="button" name="button">Pomodoro</button>
             </div>
         </div>
 
