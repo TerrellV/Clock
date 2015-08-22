@@ -1,2 +1,1 @@
-# Clock
-Clock Application
+#Clock
