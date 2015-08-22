@@ -20,13 +20,13 @@
  * Background
 */
 body {
-  background-color: #AFAEA0; }
+  background-color: #1A1A1A; }
 
 /*
  * App Container
 */
 #app {
-  background-color: #333333;
+  background-color: #1A1A1A;
   height: 780px;
   width: 90%;
   max-width: 550px;
@@ -40,7 +40,7 @@ body {
   top: 0px;
   height: 100px;
   margin: 0;
-  border-bottom: 1px solid #4D4D4D; }
+  border-bottom: 1px solid #333333; }
   #tab-container #tab-stopwatch {
     float: right; }
   #tab-container .tab-title {
@@ -92,7 +92,7 @@ body {
     height: 120px;
     width: 120px;
     border-radius: 50%;
-    background-color: #4D4D4D;
+    background-color: #333333;
     display: inline-block;
     margin: 0 2%;
     position: relative;
@@ -250,7 +250,7 @@ input:focus {
   left: 50%;
   transform: translateX(-50%);
   width: 100%;
-  background-color: #333333; }
+  background-color: #1A1A1A; }
 
 #loading-inner {
   left: 0px;
@@ -465,22 +465,22 @@ input:focus {
 
 #btn-start {
   width: 100%;
-  background-color: #333333;
+  background-color: #1A1A1A;
   color: #CCCCCC;
   font-family: "Roboto",sans-serif;
   font-weight: 300; }
 
 #btn-resume {
   width: 50%;
-  background-color: #333333; }
+  background-color: #1A1A1A; }
 
 #btn-pause {
   width: 50%;
-  background-color: #333333; }
+  background-color: #1A1A1A; }
 
 #btn-reset {
   left: 50%;
   width: 50%;
-  background-color: #333333; }
+  background-color: #1A1A1A; }
 
 /*# sourceMappingURL=main.css.map */

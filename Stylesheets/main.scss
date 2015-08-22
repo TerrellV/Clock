@@ -63,7 +63,7 @@ $dark-orange: #C45D3E;
 */
 
 body {
-    background-color: $clock-beige;
+    background-color: $black-back;
 }
 
 /*
@@ -71,7 +71,7 @@ body {
 */
 
 #app {
-    background-color: $black-one;
+    background-color: $black-back;
     height: 780px;
     width: 90%;
     max-width: 550px;
@@ -86,7 +86,7 @@ body {
     top: 0px;
     height: 100px;
     margin: 0;
-    border-bottom: 1px solid $black-two;
+    border-bottom: 1px solid $black-one;
     #tab-stopwatch {
         float: right;
     }
@@ -139,7 +139,7 @@ body {
         height: 120px;
         width: 120px;
         border-radius: 50%;
-        background-color: $black-two;
+        background-color: $black-one;
         display: inline-block;
         margin: 0 2%;
         position: relative;
@@ -288,7 +288,7 @@ input:focus {
 #loading-outer {
     @include center-me-horiz();
     width: 100%;
-    background-color: $black-one;
+    background-color: $black-back;
 }
 #loading-inner {
     left: 0px;
@@ -497,21 +497,21 @@ input:focus {
 
 #btn-start {
     width: 100%;
-    background-color: $black-one;
+    background-color: $black-back;
     color: $light-grey;
     font-family: "Roboto",sans-serif;
     font-weight: 300;
 }
 #btn-resume {
     width: 50%;
-    background-color: $black-one;
+    background-color: $black-back;
 }
 #btn-pause {
     width: 50%;
-    background-color: $black-one;
+    background-color: $black-back;
 }
 #btn-reset {
     left: 50%;
     width: 50%;
-    background-color: $black-one;
+    background-color: $black-back;
 }
