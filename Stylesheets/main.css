@@ -20,13 +20,13 @@
  * Background
 */
 body {
-  background-color: #4D4D4D; }
+  background-color: #AFAEA0; }
 
 /*
  * App Container
 */
 #app {
-  background-color: #1A1A1A;
+  background-color: #333333;
   height: 780px;
   width: 90%;
   max-width: 550px;
@@ -40,7 +40,7 @@ body {
   top: 0px;
   height: 100px;
   margin: 0;
-  border-bottom: 1px solid; }
+  border-bottom: 1px solid #4D4D4D; }
   #tab-container #tab-stopwatch {
     float: right; }
   #tab-container .tab-title {
@@ -54,6 +54,7 @@ body {
       font-family: "Roboto",sans-serif;
       font-size: 30px;
       font-weight: 300;
+      color: #666666;
       position: absolute;
       left: 50%;
       top: 50%;
@@ -91,7 +92,7 @@ body {
     height: 120px;
     width: 120px;
     border-radius: 50%;
-    background-color: #333333;
+    background-color: #4D4D4D;
     display: inline-block;
     margin: 0 2%;
     position: relative;
@@ -133,7 +134,7 @@ body {
   text-align: center;
   top: 50%;
   transform: translate(-50%, -50%);
-  border-bottom: 2px solid #333333; }
+  border-bottom: 2px solid #4D4D4D; }
 
 input[type=number]::-webkit-inner-spin-button,
 input[type=number]::-webkit-outer-spin-button {
@@ -141,16 +142,16 @@ input[type=number]::-webkit-outer-spin-button {
   margin: 0; }
 
 ::-webkit-input-placeholder {
-  color: rgba(80, 80, 80, 0.43); }
+  color: #4D4D4D; }
 
 :-moz-placeholder {
-  color: rgba(80, 80, 80, 0.43); }
+  color: #4D4D4D; }
 
 ::-moz-placeholder {
-  color: rgba(80, 80, 80, 0.43); }
+  color: #4D4D4D; }
 
 :-ms-input-placeholder {
-  color: rgba(80, 80, 80, 0.43); }
+  color: #4D4D4D; }
 
 #time-input-container {
   display: inline-block;
@@ -205,7 +206,8 @@ input:focus {
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-  top: 450px; }
+  top: 450px;
+  color: #CCCCCC; }
 
 /*
  * Actual Timer To Display
@@ -319,7 +321,7 @@ input:focus {
   font-weight: 400;
   color: #CCCCCC;
   outline: none;
-  border-bottom: 1px solid #333333; }
+  border-bottom: 1px solid #4D4D4D; }
 
 .underlineTask:after {
   content: '';
@@ -349,7 +351,7 @@ input:focus {
   height: 30px;
   width: 30px;
   border-radius: 50%;
-  background-color: #333333;
+  background-color: #4D4D4D;
   border: 0px;
   color: #CCCCCC;
   position: relative; }
@@ -359,7 +361,7 @@ input:focus {
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
-    color: #666666; }
+    color: #CCCCCC; }
 
 .task-in-list {
   list-style-type: none;
@@ -370,7 +372,7 @@ input:focus {
     cursor: pointer;
     position: relative; }
     .task-in-list label:hover {
-      color: whitesmoke; }
+      color: #CCCCCC; }
   .task-in-list input[type="checkbox"] {
     display: none; }
     .task-in-list input[type="checkbox"] + span:before {
@@ -398,7 +400,7 @@ input:focus {
   height: 18px;
   width: 18px;
   border-radius: 50%;
-  background-color: #333333;
+  background-color: #4D4D4D;
   border: 0px;
   color: #CCCCCC;
   position: relative;
@@ -407,12 +409,12 @@ input:focus {
   #remove-task-btn:hover {
     border: 1px solid whitesmoke; }
   #remove-task-btn i {
-    font-size: 12px;
+    font-size: 10px;
     position: absolute;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
-    color: #666666; }
+    color: #CCCCCC; }
 
 /*
  * Clock type buttons
@@ -470,15 +472,15 @@ input:focus {
 
 #btn-resume {
   width: 50%;
-  background-color: #333333; }
+  background-color: #4D4D4D; }
 
 #btn-pause {
   width: 50%;
-  background-color: #333333; }
+  background-color: #4D4D4D; }
 
 #btn-reset {
   left: 50%;
   width: 50%;
-  background-color: #4D4D4D; }
+  background-color: #666666; }
 
 /*# sourceMappingURL=main.css.map */

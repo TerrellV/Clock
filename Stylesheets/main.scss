@@ -2,11 +2,12 @@ $black-back: #1A1A1A;
 $black-one: #333333;
 $black-two: #4D4D4D;
 $black-three: #666666;
-
 $light-grey: #CCCCCC;
 
 $clock-beige: #AFAEA0;
 $orange: #EE7C4B;
+$dark-orange: #C45D3E;
+
 @import url(https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css);
 @import url(http://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900);
 
@@ -62,7 +63,7 @@ $orange: #EE7C4B;
 */
 
 body {
-    background-color: $black-two;
+    background-color: $clock-beige;
 }
 
 /*
@@ -70,7 +71,7 @@ body {
 */
 
 #app {
-    background-color: $black-back;
+    background-color: $black-one;
     height: 780px;
     width: 90%;
     max-width: 550px;
@@ -85,7 +86,7 @@ body {
     top: 0px;
     height: 100px;
     margin: 0;
-    border-bottom: 1px solid;
+    border-bottom: 1px solid $black-two;
     #tab-stopwatch {
         float: right;
     }
@@ -100,6 +101,7 @@ body {
             font-family: "Roboto",sans-serif;
             font-size: 30px;
             font-weight: 300;
+            color: $black-three;
             @include center-me();
             &:after {
                 content: '';
@@ -137,7 +139,7 @@ body {
         height: 120px;
         width: 120px;
         border-radius: 50%;
-        background-color: $black-one;
+        background-color: $black-two;
         display: inline-block;
         margin: 0 2%;
         position: relative;
@@ -175,7 +177,7 @@ body {
     text-align: center;
     top: 50%;
     transform: translate(-50%,-50%);
-    border-bottom: 2px solid $black-one;
+    border-bottom: 2px solid $black-two;
 }
 input[type=number]::-webkit-inner-spin-button,
 input[type=number]::-webkit-outer-spin-button {
@@ -183,16 +185,16 @@ input[type=number]::-webkit-outer-spin-button {
   margin: 0;
 }
 ::-webkit-input-placeholder {
-      color:rgba(80, 80, 80, 0.43);
+      color:$black-two;
 }
 :-moz-placeholder {
-      color:rgba(80, 80, 80, 0.43);
+      color:$black-two;
 }
 ::-moz-placeholder {
-      color:rgba(80, 80, 80, 0.43);
+      color:$black-two;
 }
 :-ms-input-placeholder {
-      color:rgba(80, 80, 80, 0.43);
+      color:$black-two;
 }
 #time-input-container {
     display: inline-block;
@@ -243,9 +245,9 @@ input:focus {
         position: absolute;
         @include center-me-horiz();
         top: 450px;
+        color: $light-grey;
     }
 }
-
 
 /*
  * Actual Timer To Display
@@ -344,7 +346,7 @@ input:focus {
     font-weight: 400;
     color: $light-grey;
     outline: none;
-    border-bottom: 1px solid $black-one;
+    border-bottom: 1px solid $black-two;
 }
 .underlineTask:after {
     content: '';
@@ -368,14 +370,14 @@ input:focus {
     height: 30px;
     width: 30px;
     border-radius: 50%;
-    background-color: $black-one;
+    background-color: $black-two;
     border: 0px;
     color: $light-grey;
     position: relative;
     i {
         font-size: 18px;
         @include center-me();
-        color: $black-three;
+        color: $light-grey;
     }
 }
 .task-in-list {
@@ -388,7 +390,7 @@ input:focus {
         position: relative;
         &:hover {
             // edit hover color of text
-            color: whitesmoke;
+            color: $light-grey;
         }
     }
     input[type="checkbox"] {
@@ -422,7 +424,7 @@ input:focus {
     height: 18px;
     width: 18px;
     border-radius: 50%;
-    background-color: $black-one;
+    background-color: $black-two;
     border: 0px;
     color: $light-grey;
     position: relative;
@@ -432,9 +434,9 @@ input:focus {
         border: 1px solid whitesmoke;
     }
     i {
-        font-size: 12px;
+        font-size: 10px;
         @include center-me();
-        color: $black-three;
+        color: $light-grey;
     }
 }
 
@@ -502,14 +504,14 @@ input:focus {
 }
 #btn-resume {
     width: 50%;
-    background-color: $black-one;
+    background-color: $black-two;
 }
 #btn-pause {
     width: 50%;
-    background-color: $black-one;
+    background-color: $black-two;
 }
 #btn-reset {
     left: 50%;
     width: 50%;
-    background-color: $black-two;
+    background-color: $black-three;
 }
