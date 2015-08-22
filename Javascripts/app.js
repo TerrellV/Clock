@@ -1,9 +1,9 @@
 var app = angular.module("myApp", ['factories']);
 
-app.controller('timerController', function($scope, multipliers ) {
+app.controller('mainController', function($scope, factory ) {
 
     // load in hardcoded values from factory
-    var multipliers = multipliers.values();
+    var multipliers = factory.multipliers();
 
     $scope.given = {
         "hours": false,
@@ -12,31 +12,25 @@ app.controller('timerController', function($scope, multipliers ) {
     }
 
     var paused = false;
-    var timeouts = [];
     var enteredProps;
-
 
     // Sets class of normal button to active / orange and pomo button to clear with border
     $scope.isActive = true;
     // ON CLICK OF START determine which to show
     $scope.start = function() {
         // if pomo is clicked
-        console.log($scope.isActive);
         if ( $scope.isActive === false ){
-            console.log('run pomo');
             $scope.given.seconds = false; // for ng-hide. Show seconds
             $scope.hideStart = true;
             $scope.hideTaskInput = true;
             $scope.dontShowClockOptions = true;
             $scope.showPomoScreen();
-            // initiate start with static values for 25 minutes
-            $scope.pomoVals = {
-                "hours": 0,
-                "minutes": 25,
-                "seconds": 0
-            }
+            // initiate start with static time values for 25 minutes
 
-            $scope.startTime( $scope.pomoVals );
+            // used factory values for new time
+            // var newTime = ;
+
+            $scope.startTime( factory.pomoCLockValues() );
         } else {
             // reset what values to show
             $scope.given.hours = false;
@@ -106,9 +100,7 @@ app.controller('timerController', function($scope, multipliers ) {
     // DEFINE : begin timmer
     $scope.startTime = function( timeValues ) {
 
-        console.log(timeValues);
-
-        enteredProps = Object.getOwnPropertyNames(timeValues);
+        enteredProps = Object.getOwnPropertyNames( timeValues );
         var filteredProps = enteredProps.filter(function(prop) {
             return timeValues[prop] !== 0;
         });
@@ -123,11 +115,8 @@ app.controller('timerController', function($scope, multipliers ) {
         $scope.displayMinutes = timeValues.minutes || 0;
         $scope.displaySeconds = timeValues.seconds || 0;
 
-        console.log($scope.displaySeconds,$scope.displayMinutes,$scope.displayHours);
-
         if($scope.displayHours === 0 ) {
             $scope.given.hours = true;
-            console.log('only show minutes and seconds',$scope.given.hours);
         }
         // if hours and minutes === 0 only show seconds
         if( $scope.displayHours === 0 && $scope.displayMinutes === 0 ) {
@@ -161,14 +150,11 @@ app.controller('timerController', function($scope, multipliers ) {
             }
             $scope.displaySeconds--;
             $scope.$apply();
-            console.log('h', $scope.displayHours, 'min', $scope.displayMinutes, 'sec', $scope.displaySeconds);
             ticker();
-
         }
 
         function ticker() {
             var timeoutID = window.setTimeout(onEachSecondDo, [1000]);
-            timeouts.push(timeoutID);
         }
 
         ticker();
