@@ -405,12 +405,12 @@ input:focus {
             display: inline-block;
             text-align: center;
             margin-right: 20px;
-            background-image: url(../images/icons/unchecked-build.svg);
+            background-image: url(../assets/icons/unchecked-build.svg);
             background-size: 80%;
             background-repeat: no-repeat;
         }
         &:checked + span:before{
-            background-image: url(../images/icons/checked-build.svg);
+            background-image: url(../assets/icons/checked-build.svg);
             background-size: 80%;
             background-repeat: no-repeat;
         }
