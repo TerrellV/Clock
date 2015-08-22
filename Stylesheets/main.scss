@@ -132,7 +132,7 @@ body {
     width: 100%;
     height: 120px;
     text-align: center;
-    @include transition("all 500ms ease-in-out");
+    @include transition("all 300ms ease-in-out");
     .clock-minimized {
         height: 120px;
         width: 120px;
@@ -235,6 +235,17 @@ input[type=number]::-webkit-outer-spin-button {
 input:focus {
     border: 0px;
 }
+#input-description-container{
+    p {
+        font-size: 20px;
+        font-family: "Roboto",sans-serif;
+        font-weight: 300;
+        position: absolute;
+        @include center-me-horiz();
+        top: 450px;
+    }
+}
+
 
 /*
  * Actual Timer To Display
@@ -242,10 +253,10 @@ input:focus {
 
 #showTime-container {
     @include center-me-horiz();
-    bottom: 30%;
+    top: 475px;
     width: 100%;
     text-align: center;
-    @include transition('all .5s ease');
+    @include transition('all .4s ease');
     h2 {
         display: inline-block;
         font-family: "Roboto",sans-serif;

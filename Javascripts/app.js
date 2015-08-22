@@ -179,11 +179,11 @@ app.controller('timerController', function($scope) {
         }
     }
 
-    // DEFINE on click of start - set css -
+    // DEFINE show stuff when traditional is clicked and timer is started. Adding css
     $scope.showRunningScreen = function(){
         // angular styles.
         $scope.clockContainer = {
-            "top": "130px"
+            "top": "190px"
         };
         // adding a class of big clock
         $scope.bigClock = 'bigClocks';
@@ -228,7 +228,7 @@ app.controller('timerController', function($scope) {
         $scope.taskTitle = 'Add a Task Below';
         if ( type === 'pomodoro' ){
             $scope.clockContainer = {
-                "top": "110px"
+                "top": "130px"
             };
             $scope.moveTimeContainer = {
                 "top": "270px"
@@ -241,6 +241,20 @@ app.controller('timerController', function($scope) {
             $scope.given.seconds = true;
             $scope.isActive = false;
         } else {
+            console.log('where I want to be');
+
+            traditionalScreen();
+            function traditionalScreen() {
+                $scope.showTasks = false;
+                $scope.showInput = false;
+                $scope.showTime = false;
+                $scope.clockContainer = {
+                    "top": "150px"
+                };
+                $scope.moveTimeContainer = {
+                    "top": "475px"
+                }
+            }
             $scope.isActive = true;
             $scope.traditional = true;
         }
@@ -277,7 +291,6 @@ app.controller('timerController', function($scope) {
     }
 
 });
-
 
 
 
