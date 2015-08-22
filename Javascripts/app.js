@@ -1,12 +1,9 @@
-var app = angular.module("myApp", []);
+var app = angular.module("myApp", ['factories']);
 
-app.controller('timerController', function($scope) {
+app.controller('timerController', function($scope, multipliers ) {
 
-    var multipliers = {
-        "hours": 3600000,
-        "minutes": 60000,
-        "seconds": 1000
-    }
+    // load in hardcoded values from factory
+    var multipliers = multipliers.values();
 
     $scope.given = {
         "hours": false,
@@ -41,6 +38,10 @@ app.controller('timerController', function($scope) {
 
             $scope.startTime( $scope.pomoVals );
         } else {
+            // reset what values to show
+            $scope.given.hours = false;
+            $scope.given.minutes = false;
+            $scope.given.seconds = false;
             console.log('run normal');
             $scope.dontShowClockOptions = true;
             $scope.hideStart = true;
@@ -289,26 +290,4 @@ app.controller('timerController', function($scope) {
             "bottom": "100px"
         }
     }
-
 });
-
-
-
-
-
-// limit input of text to two characters and only numbers
-function maxLengthCheck(object) {
-    if (object.value.length > object.maxLength)
-        object.value = object.value.slice(0, object.maxLength)
-}
-
-function isNumeric(evt) {
-    var theEvent = evt || window.event;
-    var key = theEvent.keyCode || theEvent.which;
-    key = String.fromCharCode(key);
-    var regex = /[0-9]|\./;
-    if (!regex.test(key)) {
-        theEvent.returnValue = false;
-        if (theEvent.preventDefault) theEvent.preventDefault();
-    }
-}
