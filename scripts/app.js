@@ -1,4 +1,8 @@
-var app = angular.module("myApp", ['factories']);
+var app = angular.module("myApp", ['factories','ngRoute']);
+
+
+
+
 
 app.controller('mainController', function($scope, factory ) {
 
