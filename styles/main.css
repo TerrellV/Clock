@@ -20,7 +20,7 @@
  * Background
 */
 body {
-  background-color: #1A1A1A; }
+  background-color: #3F3F3F; }
 
 /*
  * App Container
@@ -255,7 +255,9 @@ input:focus {
 #loading-inner {
   left: 0px;
   width: 0px;
-  background-color: #EE7C4B;
+  background-color: #EE7C4B; }
+
+.startLoad {
   -webkit-animation: loading linear both;
   -moz-animation: loading linear both;
   -ms-animation: loading linear both;
@@ -385,11 +387,11 @@ input:focus {
       display: inline-block;
       text-align: center;
       margin-right: 20px;
-      background-image: url(../images/icons/unchecked-build.svg);
+      background-image: url(../assets/icons/unchecked-build.svg);
       background-size: 80%;
       background-repeat: no-repeat; }
     .task-in-list input[type="checkbox"]:checked + span:before {
-      background-image: url(../images/icons/checked-build.svg);
+      background-image: url(../assets/icons/checked-build.svg);
       background-size: 80%;
       background-repeat: no-repeat; }
     .task-in-list input[type="checkbox"]:checked + span {

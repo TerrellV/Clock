@@ -18,6 +18,10 @@ app.controller('mainController', function($scope, factory ) {
     $scope.isActive = true;
     // ON CLICK OF START determine which to show
     $scope.start = function() {
+
+        // init value
+        paused = false;
+
         // if pomo is clicked
         if ( $scope.isActive === false ){
             $scope.given.seconds = false; // for ng-hide. Show seconds
@@ -37,6 +41,7 @@ app.controller('mainController', function($scope, factory ) {
             $scope.given.minutes = false;
             $scope.given.seconds = false;
             console.log('run normal');
+            $scope.startLoad = 'startLoad';
             $scope.dontShowClockOptions = true;
             $scope.hideStart = true;
             $scope.showInput = true;
@@ -96,7 +101,31 @@ app.controller('mainController', function($scope, factory ) {
         }
         var delayResumeID = setTimeout(delayResume, 400);
     }
-
+    $scope.reset = function() {
+        if( $scope.isActive === false ) {
+            console.log('pomo clock');
+        } else {
+            console.log('traditional clock');
+            $scope.showInput = false;
+            $scope.showTime = false;
+            $scope.dontShowClockOptions = false;
+            $scope.bigClock = false;
+            $scope.clockContainer = false;
+            $scope.bigHandM = false;
+            $scope.running = false;
+            $scope.startLoad = false;
+            $scope.hideStart = false;
+            // clear all values
+            $scope.displayHours = 0;
+            $scope.displayMinutes = 0;
+            $scope.displaySeconds = 0;
+            $scope.time.totalMs = 0;
+            $scope.bigHandS = false;
+            if ( paused === false ) {
+                paused = true;
+            }
+        }
+    }
     // DEFINE : begin timmer
     $scope.startTime = function( timeValues ) {
 
@@ -110,6 +139,7 @@ app.controller('mainController', function($scope, factory ) {
         filteredProps.map(function(prop) {
             timeValues.totalMs += (timeValues[prop] * multipliers[prop]);
         });
+
 
         $scope.displayHours = timeValues.hours || 0;
         $scope.displayMinutes = timeValues.minutes || 0;
@@ -160,7 +190,6 @@ app.controller('mainController', function($scope, factory ) {
         ticker();
 
         if ( $scope.showTasks !== true ) {
-            console.log(timeValues.totalMs);
             // give loading bar an animation duration
             $("#loading-inner").css("animation-duration", timeValues.totalMs +'ms');
         }

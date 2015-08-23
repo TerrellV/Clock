@@ -63,7 +63,7 @@ $dark-orange: #C45D3E;
 */
 
 body {
-    background-color: $black-back;
+    background-color: #3F3F3F;
 }
 
 /*
@@ -294,10 +294,11 @@ input:focus {
     left: 0px;
     width:0px;
     background-color: $orange;
+}
+.startLoad{
     @include animation('loading linear both');
     animation-delay: 1s;
 }
-
 /*
  * Tasks to complete
 */

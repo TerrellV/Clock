@@ -77,6 +77,7 @@
                     <p>Enter Custom Time</p>
             </div>
         </div>
+        
         <!-- loading line -->
         <div ng-show="running" id="loading-outer" class="loading">
             <div id="loading-inner" ng-class="{startLoad:startLoad}" class="loading"></div>
@@ -129,7 +130,7 @@
 
                 <button ng-click="resume()"ng-show="paused" id="btn-resume" type="button" name="button" class="btn-bottom">RESUME</button>
 
-                <button id="btn-reset" type="button" name="button" class="btn-bottom">RESET</button>
+                <button id="btn-reset" ng-click="reset()"type="button" name="button" class="btn-bottom">RESET</button>
 
             </div>
 
