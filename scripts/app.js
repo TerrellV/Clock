@@ -59,7 +59,9 @@ app.controller('mainController', function($scope, factory ) {
     $scope.pauseApp = function() {
         paused = true;
         $scope.paused = true;
-        $("#loading-inner").css("animation-play-state", "paused");
+        $scope.playPauseAnimation = {
+            "animation-play-state": "paused"
+        }
         $("#clock-hand-min").css("animation-play-state", "paused");
         $scope.bigHandS = {
             "height": "60px",
@@ -107,6 +109,7 @@ app.controller('mainController', function($scope, factory ) {
         } else {
             console.log('traditional clock');
             $scope.showInput = false;
+            $scope.paused = false;
             $scope.showTime = false;
             $scope.dontShowClockOptions = false;
             $scope.bigClock = false;
@@ -115,6 +118,7 @@ app.controller('mainController', function($scope, factory ) {
             $scope.running = false;
             $scope.startLoad = false;
             $scope.hideStart = false;
+            $scope.playPauseAnimation = false;
             // clear all values
             $scope.displayHours = 0;
             $scope.displayMinutes = 0;

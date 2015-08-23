@@ -77,10 +77,10 @@
                     <p>Enter Custom Time</p>
             </div>
         </div>
-        
+
         <!-- loading line -->
         <div ng-show="running" id="loading-outer" class="loading">
-            <div id="loading-inner" ng-class="{startLoad:startLoad}" class="loading"></div>
+            <div id="loading-inner" ng-style="playPauseAnimation"ng-class="{startLoad:startLoad}" class="loading"></div>
         </div>
 
         <!-- Tasks to complete for pomordoro clock -->
