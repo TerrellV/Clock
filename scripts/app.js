@@ -1,9 +1,5 @@
 var app = angular.module("myApp", ['factories','ngRoute']);
 
-
-
-
-
 app.controller('mainController', function($scope, factory ) {
 
     // load in hardcoded values from factory
