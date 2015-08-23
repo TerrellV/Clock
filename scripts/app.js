@@ -2,12 +2,13 @@ var app = angular.module("myApp", ['factories','ngRoute']);
 
 app.config(function($routeProvider){
     // set up routes
+    // fix routes so that they work with gihub pages
     $routeProvider
         .when('/', {
-            templateUrl: '../partials/test.html'
+            templateUrl: '../partials/stopwatch.html'
         })
         .when('/stopwatch', {
-            templateUrl: '../partials/stopwatch.html'
+            templateUrl: '../partials/test.html'
         })
 })
 
