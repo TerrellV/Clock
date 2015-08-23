@@ -485,4 +485,92 @@ input:focus {
   width: 50%;
   background-color: #1A1A1A; }
 
+@keyframes boomR {
+  from {
+    transform: rotate(0deg); }
+  to {
+    transform: rotate(-90deg); } }
+@keyframes boomL {
+  from {
+    transform: rotate(0deg); }
+  to {
+    transform: rotate(90deg); } }
+#container {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  border-top: 2px solid;
+  width: 450px;
+  height: 350px; }
+
+#ball-containerblue {
+  position: absolute;
+  height: 400px;
+  width: 150px;
+  left: 300px;
+  transform-origin: center top; }
+  #ball-containerblue #string {
+    position: absolute;
+    background-color: teal;
+    height: 200px;
+    width: 1px;
+    left: 50%;
+    transform: translateX(-50%); }
+  #ball-containerblue #ball-l {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 150px;
+    width: 150px;
+    border-radius: 50%;
+    background-color: teal;
+    bottom: 50px; }
+
+#ball-containerpurple {
+  position: absolute;
+  height: 400px;
+  width: 150px;
+  transform-origin: center top; }
+  #ball-containerpurple #string {
+    position: absolute;
+    background-color: rebeccapurple;
+    height: 200px;
+    width: 1px;
+    left: 50%;
+    transform: translateX(-50%); }
+  #ball-containerpurple #ball-r {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 150px;
+    width: 150px;
+    border-radius: 50%;
+    background-color: rebeccapurple;
+    bottom: 50px; }
+
+#ball-containerred {
+  position: absolute;
+  height: 400px;
+  width: 150px;
+  left: 150px;
+  transform-origin: center top; }
+  #ball-containerred #string {
+    position: absolute;
+    background-color: #e74c3c;
+    height: 200px;
+    width: 1px;
+    left: 50%;
+    transform: translateX(-50%); }
+  #ball-containerred #ball-r {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 150px;
+    width: 150px;
+    border-radius: 50%;
+    background-color: #EE7C4B;
+    border: 3px solid #EE7C4B;
+    bottom: 50px; }
+
 /*# sourceMappingURL=main.css.map */

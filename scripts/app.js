@@ -1,14 +1,14 @@
-var app = angular.module("myApp", ['factories','ngRoute']);
+var app = angular.module("myApp", ['factories','ngRoute','stopwatch']);
 
 app.config(function($routeProvider){
     // set up routes
     // fix routes so that they work with gihub pages
     $routeProvider
         .when('/', {
-            templateUrl: 'partial/test.html'
+            templateUrl: 'partial/timer.html', controller:'mainController'
         })
         .when('/stopwatch', {
-            templateUrl: 'partial/stopwatch.html'
+            templateUrl: 'partial/stopwatch.html', controller:'stopwatchController'
         })
 })
 
@@ -145,6 +145,8 @@ app.controller('mainController', function($scope, factory ) {
     }
     // DEFINE : begin timmer
     $scope.startTime = function( timeValues ) {
+
+        console.log(timeValues);
 
         enteredProps = Object.getOwnPropertyNames( timeValues );
         var filteredProps = enteredProps.filter(function(prop) {

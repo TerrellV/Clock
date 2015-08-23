@@ -22,126 +22,27 @@
     <![endif]-->
 </head>
 
-<body ng-controller="mainController">
-
-    <div ng-view>
-
-    </div>
-    <a href="#/stopwatch">
-        <button> go to stop Watch</button>
-    </a>
-
+<body>
     <div id="app" class="mdl-shadow--6dp">
         <!-- Tabs for switching between clock type -->
         <div id="tab-container">
-            <div id='tab-timer'class="tab-title">
-                <h1 id="timer-text">Timer</h1>
-            </div>
-            <div id="tab-stopwatch" class="tab-title">
-                <h1 id="stopwatch-text">Stopwatch</h1>
-            </div>
-        </div>
-
-        <!-- animated clocks -->
-        <div id="clocks-container" ng-style="clockContainer" class="">
-            <div id="clock-min" ng-class="bigClock" class="mdl-shadow--2dp clock clock-minimized">
-                <div id="clock-hand-min" ng-style="bigHandM" class="clock-hand">
+            <a href="#/">
+                <div id='tab-timer'class="tab-title">
+                    <h1 id="timer-text">Timer</h1>
                 </div>
-            </div>
-            <div id="clock-sec" ng-class="bigClock" class="mdl-shadow--2dp clock clock-minimized">
-                <div id="clock-hand-sec" ng-style="bigHandS" class="clock-hand">
+            </a>
+            <a href="#/stopwatch">
+                <div id="tab-stopwatch" class="tab-title">
+                    <h1 id="stopwatch-text">Stopwatch</h1>
                 </div>
-            </div>
+            </a>
         </div>
 
-        <!-- Count down time  -->
-        <div id="showTime-container" ng-style="moveTimeContainer" ng-show="showTime" >
-            <h2 ng-hide="given.hours" >{{ displayHours }}<span>h</span></h2>
-            <h2 ng-hide="given.minutes">{{ displayMinutes }}<span>m</span></h2>
-            <h2 ng-hide="given.seconds">{{ displaySeconds }}<span>s</span></h2>
+        <div ng-view>
+            <!-- insert html content for view based on which panel is clicked -->
         </div>
-
-        <!--Input Times for default timer -->
-        <div id="input-description-container">
-            <form action="#" id="timer" ng-hide="showInput">
-                <div id="time-input-container">
-                    <input ng-model="time.hours" id="hour-input" class="time-input" type="number" placeholder="00" onkeypress="return isNumeric(event)" oninput="(maxLengthCheck(this))" maxlength="2" min="1" max="100" title="Use numbers" />
-                    <div class="underline"></div>
-                    <span class="input-lables">h</span>
-                </div>
-                <div id="time-input-container">
-                    <input ng-model="time.minutes" id="minutes-input" class="time-input" type="number" placeholder="00" onkeypress="return isNumeric(event)" oninput="(maxLengthCheck(this))" maxlength="2" min="1" max="59" title="Use numbers" />
-                    <div class="underline"></div>
-                    <span class="input-lables">m</span>
-                </div>
-                <div id="time-input-container">
-                    <input ng-model="time.seconds" id="seconds-input" class="time-input" type="number" placeholder="00" onkeypress="return isNumeric(event)" oninput="(maxLengthCheck(this))" maxlength="2" min="1" max="59" title="Use numbers" />
-                    <div class="underline"></div>
-                    <span class="input-lables">s</span>
-                </div>
-            </form>
-            <div id="input-description-container" ng-hide="showInput">
-                    <p>Enter Custom Time</p>
-            </div>
-        </div>
-
-        <!-- loading line -->
-        <div ng-show="running" id="loading-outer" class="loading">
-            <div id="loading-inner" ng-style="playPauseAnimation"ng-class="{startLoad:startLoad}" class="loading"></div>
-        </div>
-
-        <!-- Tasks to complete for pomordoro clock -->
-        <div id="tasks-container" ng-style="moveTasksDown" ng-show="showTasks">
-            <div id="tasks-title">
-                <h3>{{ taskTitle }}</h3>
-            </div>
-            <div id="input-btn-container" ng-hide="hideStart">
-                <button id="add-task-btn" type="button" ng-click="updateTasks( taskInput )" class="">
-                    <i class="material-icons">add</i>
-                </button>
-                <div id="inner-input-container" >
-                    <input id="task-input" type="text" maxlength="30" ng-model="taskInput" placeholder="Add task to list..."></inpute>
-                    <div class="underlineTask"></div>
-                </div>
-            </div>
-            <div>
-                <ul>
-                    <li class="task-in-list" ng-repeat="task in taskList">
-                        <button id="remove-task-btn" type="button" ng-click="delete($index)" class="delete-btn">
-                            <i class="material-icons">clear</i>
-                        </button>
-                        <label>
-                            <input class="checkbox" type="checkbox"/>
-                            <span>{{task.text}}</span>
-                        </label>
-                </li>
-                </ul>
-            </div>
-        </div>
-
-
-        <!-- clock type buttons  -->
-        <div id="clock-type-container" ng-hide="dontShowClockOptions">
-            <div id="clock-type" class="">
-                <button ng-class="{true:'btn-active', false: 'btn-inactive'}[isActive]" ng-click="clockShow('traditional')"  id="normalButton"type="button" name="button">Traditional</button>
-                <button ng-class="{true:'btn-inactive', false: 'btn-active'}[isActive]" ng-click="clockShow('pomodoro')" id="pomoButton" type="button" name="button">Pomodoro</button>
-            </div>
-        </div>
-
-        <!-- bottom action buttons -->
-        <div class="action-button">
-            <button ng-hide="hideStart" ng-click="start()" id="btn-start" type="button" name="button" class="btn-bottom">START</button>
-            <div ng-show="hideStart">
-
-                <button ng-hide="paused" ng-click="pauseApp()" id="btn-pause" type="button" name="button" class="btn-bottom">PAUSE</button>
-
-                <button ng-click="resume()"ng-show="paused" id="btn-resume" type="button" name="button" class="btn-bottom">RESUME</button>
-
-                <button id="btn-reset" ng-click="reset()"type="button" name="button" class="btn-bottom">RESET</button>
-
-            </div>
-
-            <!-- <script src ="angular-route.js"></script> -->
+    </div>
+            <script src="scripts/stopwatchModule.js"></script>
             <script src="bower_components/angular-route/angular-route.min.js"></script>
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
             <script type="text/javascript" src=scripts/script.js></script>

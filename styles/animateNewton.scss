@@ -1,0 +1,97 @@
+@keyframes boomR {
+  from{transform: rotate(0deg)}
+  to{transform: rotate(-90deg)}
+}
+@keyframes boomL {
+  from{transform: rotate(0deg)}
+  to{transform: rotate(90deg)}
+}
+
+#container {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+  border-top: 2px solid;
+  width: 450px;
+  height: 350px;
+}
+
+#ball-containerblue {
+  position: absolute;
+  height: 400px;
+  width: 150px;
+  left: 300px;
+  transform-origin: center top;
+  // @include animation("boomR 1s ease-out 2s 2 alternate");
+  #string {
+    position: absolute;
+    background-color: teal;
+    height:200px;
+    width: 1px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  #ball-l {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 150px;
+    width: 150px;
+    border-radius: 50%;
+    background-color: teal;
+    bottom: 50px;
+  }
+}
+
+#ball-containerpurple {
+  position: absolute;
+  height: 400px;
+  width: 150px;
+  transform-origin: center top;
+  // @include animation("boomL 1s ease-out 2 alternate");
+  #string {
+    position: absolute;
+    background-color: rebeccapurple;
+    height:200px;
+    width: 1px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  #ball-r {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 150px;
+    width: 150px;
+    border-radius: 50%;
+    background-color: rebeccapurple;
+    bottom: 50px;
+  }
+}
+#ball-containerred {
+  position: absolute;
+  height: 400px;
+  width: 150px;
+  left: 150px;
+  transform-origin: center top;
+  #string {
+    position: absolute;
+    background-color: #e74c3c;
+    height:200px;
+    width: 1px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  #ball-r {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 150px;
+    width: 150px;
+    border-radius: 50%;
+    background-color: $orange;
+    border: 3px solid $orange;
+    bottom: 50px;
+  }
+}

@@ -18,7 +18,6 @@
             }
 
             factory.multipliers = function () {
-                console.log('Multipliers content was refferenced');
                 return multipliers;
             }
             factory.pomoCLockValues = function () {
