@@ -5,10 +5,10 @@ app.config(function($routeProvider){
     // fix routes so that they work with gihub pages
     $routeProvider
         .when('/', {
-            templateUrl: '/subcontent/test.html'
+            templateUrl: 'subcontent/test.html'
         })
         .when('/stopwatch', {
-            templateUrl: '/subcontent/stopwatch.html'
+            templateUrl: 'subcontent/stopwatch.html'
         })
 })
 
