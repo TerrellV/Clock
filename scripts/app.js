@@ -1,5 +1,17 @@
 var app = angular.module("myApp", ['factories','ngRoute']);
 
+app.config(function($routeProvider){
+    // set up routes
+    $routeProvider
+        .when('/', {
+            templateUrl: '../partials/test.html'
+        })
+        .when('/stopwatch', {
+            templateUrl: '../partials/stopwatch.html'
+        })
+})
+
+
 app.controller('mainController', function($scope, factory ) {
 
     // load in hardcoded values from factory

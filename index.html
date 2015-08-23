@@ -24,8 +24,14 @@
 
 <body ng-controller="mainController">
 
-    <div id="app" class="mdl-shadow--6dp">
+    <div ng-view>
 
+    </div>
+    <a href="#/stopwatch">
+        <button> go to stop Watch</button>
+    </a>
+
+    <div id="app" class="mdl-shadow--6dp">
         <!-- Tabs for switching between clock type -->
         <div id="tab-container">
             <div id='tab-timer'class="tab-title">
