@@ -1,24 +1,53 @@
-<div ng-controller="newtonAnimation">
-    <div id="container">
-      <div id='ball-containerblue'>
-        <div id='ball-l'>
+<div id="container">
+    <div id="ball-container-l" class='ball-container'>
+        <div id="ball-l" class='ball'>
         </div>
-        <div id="string">
+        <div class="string">
         </div>
-      </div>
-
-      <div id='ball-containerred'>
-        <div id='ball-r'>
-        </div>
-        <div id="string">
-        </div>
-      </div>
-
-      <div id='ball-containerpurple'>
-        <div id='ball-r'>
-        </div>
-        <div id="string">
-        </div>
-      </div>
     </div>
-<div>
+
+    <div id="ball-container-m" class='ball-container'>
+        <div id="ball-m" class='ball'>
+        </div>
+        <div class="string">
+        </div>
+    </div>
+
+    <div id="ball-container-r" class='ball-container'>
+        <div id="ball-r" class='ball'>
+        </div>
+        <div class="string">
+        </div>
+    </div>
+</div>
+
+    <div id="sw-timer-container">
+
+        <h2 ng-show="showHours" id="sw-timer-hours">{{ hours }}</h2>
+        <span ng-show="showHours">h</span>
+
+        <h2 ng-show="showMinutes" id="sw-timer-minutes">{{ minutes }}</h2>
+        <span ng-show="showMinutes">m</span>
+
+        <h2 ng-show="showSeconds" id="sw-timer-seconds">{{ seconds }}</h2>
+        <span ng-show="showSeconds">s</span>
+
+    </div>
+
+<div id="lapTimes-contianer">
+    <button type="button" ng-click="addLapTime()"name="button" id="btn-lap">Record Lap</button>
+</div>
+
+<!-- bottom action buttons -->
+<div class="action-button">
+    <button ng-hide="hideStart" ng-click="start()" id="btn-start" type="button" name="button" class="btn-bottom">START</button>
+    <div ng-show="hideStart">
+
+        <button ng-hide="hidePause" ng-click="pause()" id="btn-pause" type="button" name="button" class="btn-bottom" disabled>PAUSE</button>
+
+        <button ng-click="resume()" ng-show="showResume" id="btn-resume" type="button" name="button" class="btn-bottom" disabled>RESUME</button>
+
+        <button id="btn-reset" ng-click="reset()"type="button" name="button" class="btn-bottom">RESET</button>
+
+    </div>
+</div>

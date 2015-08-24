@@ -52,7 +52,7 @@ body {
     #tab-container .tab-title h1 {
       margin: 0px;
       font-family: "Roboto",sans-serif;
-      font-size: 30px;
+      font-size: 25px;
       font-weight: 300;
       color: #666666;
       position: absolute;
@@ -64,7 +64,7 @@ body {
         display: block;
         height: 2px;
         position: relative;
-        top: 32px;
+        top: 36px;
         background-color: #EE7C4B;
         width: 0%;
         margin: 0 auto;
@@ -485,92 +485,131 @@ input:focus {
   width: 50%;
   background-color: #1A1A1A; }
 
-@keyframes boomR {
+@keyframes animateR {
   from {
-    transform: rotate(0deg); }
+    transform: translateY(-50%) rotate(0deg); }
   to {
-    transform: rotate(-90deg); } }
-@keyframes boomL {
+    transform: translateY(-50%) rotate(-80deg); } }
+@keyframes animateL {
   from {
-    transform: rotate(0deg); }
+    transform: translateY(-50%) rotate(0deg); }
   to {
-    transform: rotate(90deg); } }
+    transform: translateY(-50%) rotate(80deg); } }
+@keyframes fill {
+  from {
+    background-color: #1A1A1A; }
+  to {
+    background-color: #EE7C4B; } }
 #container {
   position: absolute;
   left: 50%;
+  transform: translateX(-50%);
+  width: 180px;
+  height: 250px; }
+  #container:before {
+    height: 3px;
+    display: block;
+    width: 100%;
+    background-color: #333333;
+    content: '';
+    position: absolute;
+    top: 42px; }
+  #container #ball-container-m {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%); }
+  #container #ball-container-r {
+    right: 0px; }
+
+.ball-container {
+  position: absolute;
   top: 50%;
-  transform: translate(-50%, -50%);
-  border-top: 2px solid;
-  width: 450px;
-  height: 350px; }
-
-#ball-containerblue {
-  position: absolute;
-  height: 400px;
-  width: 150px;
-  left: 300px;
+  transform: translateY(-50%);
+  height: 160px;
+  width: 60px;
   transform-origin: center top; }
-  #ball-containerblue #string {
-    position: absolute;
-    background-color: teal;
-    height: 200px;
-    width: 1px;
-    left: 50%;
-    transform: translateX(-50%); }
-  #ball-containerblue #ball-l {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    height: 150px;
-    width: 150px;
-    border-radius: 50%;
-    background-color: teal;
-    bottom: 50px; }
 
-#ball-containerpurple {
+.string {
   position: absolute;
-  height: 400px;
-  width: 150px;
-  transform-origin: center top; }
-  #ball-containerpurple #string {
-    position: absolute;
-    background-color: rebeccapurple;
-    height: 200px;
-    width: 1px;
-    left: 50%;
-    transform: translateX(-50%); }
-  #ball-containerpurple #ball-r {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    height: 150px;
-    width: 150px;
-    border-radius: 50%;
-    background-color: rebeccapurple;
-    bottom: 50px; }
+  left: 50%;
+  transform: translateX(-50%);
+  height: 100px;
+  width: 2px;
+  background-color: #333333;
+  z-index: -1; }
 
-#ball-containerred {
+.ball {
   position: absolute;
-  height: 400px;
-  width: 150px;
-  left: 150px;
-  transform-origin: center top; }
-  #ball-containerred #string {
-    position: absolute;
-    background-color: #e74c3c;
-    height: 200px;
-    width: 1px;
-    left: 50%;
-    transform: translateX(-50%); }
-  #ball-containerred #ball-r {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    height: 150px;
-    width: 150px;
-    border-radius: 50%;
-    background-color: #EE7C4B;
-    border: 3px solid #EE7C4B;
-    bottom: 50px; }
+  left: 50%;
+  transform: translateX(-50%);
+  height: 60px;
+  width: 60px;
+  border-radius: 50%;
+  background-color: #EE7C4B;
+  bottom: 0px; }
+
+.animated-left {
+  -webkit-animation: animateL 500ms ease-out 2 alternate both;
+  -moz-animation: animateL 500ms ease-out 2 alternate both;
+  -ms-animation: animateL 500ms ease-out 2 alternate both;
+  -o-animation: animateL 500ms ease-out 2 alternate both;
+  animation: animateL 500ms ease-out 2 alternate both; }
+
+.animated-right {
+  -webkit-animation: animateR 500ms ease-out 1000ms 2 alternate both;
+  -moz-animation: animateR 500ms ease-out 1000ms 2 alternate both;
+  -ms-animation: animateR 500ms ease-out 1000ms 2 alternate both;
+  -o-animation: animateR 500ms ease-out 1000ms 2 alternate both;
+  animation: animateR 500ms ease-out 1000ms 2 alternate both; }
+
+#sw-timer-container {
+  height: 80px;
+  text-align: center;
+  width: 100%;
+  position: absolute;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%); }
+  #sw-timer-container h2 {
+    display: inline-block;
+    bottom: 0px;
+    margin: 0px;
+    margin-left: 10px;
+    font-size: 70px;
+    font-family: 'Roboto';
+    font-weight: 300;
+    color: #CCCCCC; }
+  #sw-timer-container span {
+    font-family: "Roboto", sans-serif;
+    font-size: 20px;
+    color: #CCCCCC; }
+
+/*
+  *lap times
+ */
+#lapTimes-contianer {
+  border-top: 2px solid #333333;
+  height: 250px;
+  width: 100%;
+  position: absolute;
+  bottom: 70px; }
+
+#btn-lap {
+  position: absolute;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 30px;
+  padding: 10px 30px;
+  border: 2px solid #CCCCCC;
+  background-color: transparent;
+  border-radius: 50px;
+  color: #CCCCCC;
+  font-family: "Roboto",sans-serif;
+  letter-spacing: 2px; }
+  #btn-lap:hover {
+    border-color: #EE7C4B; }
 
 /*# sourceMappingURL=main.css.map */

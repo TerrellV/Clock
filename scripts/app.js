@@ -12,7 +12,6 @@ app.config(function($routeProvider){
         })
 })
 
-
 app.controller('mainController', function($scope, factory ) {
 
     // load in hardcoded values from factory

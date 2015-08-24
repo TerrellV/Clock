@@ -1,0 +1,50 @@
+#sw-timer-container {
+    height: 80px;
+    text-align: center;
+    width: 100%;
+    position: absolute;
+    @include center-me();
+    h2{
+        display: inline-block;
+        bottom: 0px;
+        margin: 0px;
+        margin-left: 10px;
+        font-size: 70px;
+        font-family: 'Roboto';
+        font-weight: 300;
+        color: $light-grey;
+    }
+    span {
+        font-family: "Roboto", sans-serif;
+        font-size: 20px;
+        color: $light-grey;
+    }
+}
+
+/*
+  *lap times
+ */
+
+#lapTimes-contianer {
+    border-top: 2px solid $black-one;
+    height: 250px;
+    width: 100%;
+    position: absolute;
+    bottom: 70px;
+}
+
+#btn-lap {
+    position: absolute;
+    @include center-me-horiz();
+    top: 30px;
+    padding: 10px 30px;
+    border: 2px solid $light-grey;
+    background-color: transparent;
+    border-radius: 50px;
+    color: $light-grey;
+    font-family: "Roboto",sans-serif;
+    letter-spacing: 2px;
+    &:hover {
+        border-color: $orange;
+    }
+}
