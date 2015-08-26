@@ -43,7 +43,6 @@
             // after ( total animation duration ) milliseconds clone purple and blue to start second time
             factory.stopclone = false;
             factory.cloneBoth = function () {
-                console.log('cloned');
                 factory.clone( 'ball-container-l' );
                 factory.clone( 'ball-container-r' );
                 // continue the loop every 2.8 seconds

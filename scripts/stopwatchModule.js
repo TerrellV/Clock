@@ -2,13 +2,14 @@
     var app = angular.module('stopwatch', ['factories'])
         .controller('stopwatchController', function($scope, factory) {
 
-            $scope.lapTimes = [
-                {
-                    "number" : "01",
-                    "laptime" : "22s",
-                    "totalTimeText" : "24m 42s"
-                },
-            ];
+            // for ng repeat list of lap times
+            $scope.lapTimes = [];
+
+            $scope.prevValue = {
+                    "hours" : 0,
+                    "minutes" :0 ,
+                    "seconds" : 0
+            };
 
             $scope.startAnimation = factory.startAnimation;
             // remove class to stop animation and use factory to start it again
@@ -22,13 +23,12 @@
             $scope.showSeconds = true;
 
             /* add tracking ability of below items */
-            var prevTime;
+            // var prevTime;
 
             $scope.addLapTime = function() {
                 var totalTimeText,
                     lapTime;
                 var lapNumber = $scope.lapTimes.length + 1;
-
                 if (lapNumber < 10 ) {
                     lapNumber  = "0" + lapNumber;
                 }
@@ -42,13 +42,38 @@
                     totalTimeText =  $scope.hours + "h " + $scope.minutes + "m " + $scope.seconds + "s " ;
                 }
 
-                // keep track of laptime by subtrackting date objects
+                // keep track of laptime by subtrackting previous time from current
+                // freez and store the time when pushed
 
-                var lapTime = $scope.seconds - prevTime;
+                lapTime = {
+                        "hours" : $scope.hours - $scope.prevValue.hours,
+                        "minutes" : $scope.minutes - $scope.prevValue.minutes,
+                        "seconds" : $scope.seconds - $scope.prevValue.seconds
+                };
 
-                $scope.lapTimes.push( {"number": lapNumber, "laptime":lapTime, "totalTimeText": totalTimeText} );
-                prevTime = $scope.seconds;
+                var letters = ['h','m','s'];
+                var props = Object.getOwnPropertyNames(lapTime);
+                var totalLapTime = '';
+
+                props.map( function( prop, index ) {
+                    if ( lapTime[ prop ]!== 0 ) {
+                        totalLapTime += (lapTime[ prop ] + letters[ index ] + " ").toString();
+                        console.log( prop, lapTime[prop] );
+                    }
+                })
+
+                console.log( '------' );
+
+                $scope.lapTimes.push( {"number": lapNumber, "laptime":totalLapTime, "totalTimeText": totalTimeText} );
+
+                $scope.prevValue = {
+                    "hours" : $scope.hours,
+                    "minutes" : $scope.minutes,
+                    "seconds" : $scope.seconds
+                };
             }
+
+
             $scope.start = function() {
                 $scope.startTime( factory.newStopwatchVals() );
                 factory.startAnimation();
@@ -143,7 +168,6 @@
                     $scope.$apply();
                     ticker();
 
-                    console.log( $scope.seconds );
                 }
 
                 function ticker() {
