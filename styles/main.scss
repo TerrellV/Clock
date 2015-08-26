@@ -29,29 +29,43 @@ $dark-orange: #C45D3E;
   -o-transition: #{$str};
   transition: #{$str};
 }
+@mixin transform( $str ) {
+  -webkit-transform: #{$str};
+  -moz-transform: #{$str};
+  -ms-transform: #{$str};
+  -o-transform: #{$str};
+  transform: #{$str};
+}
+@mixin transform-origin( $str ) {
+  -webkit-transform-origin: #{$str};
+  -moz-transform-origin: #{$str};
+  -ms-transform-origin: #{$str};
+  -o-transform-origin: #{$str};
+  transform-origin: #{$str};
+}
 @mixin center-me-horiz(){
     position: absolute;
     left: 50%;
-    transform: translateX(-50%);
+    @include transform("translateX(-50%)");
 }
 @mixin center-me-vert(){
     position: absolute;
     top: 50%;
-    transform: translateY(-50%);
+    @include transform("translateY(-50%)");
 }
 @mixin center-me(){
     position: absolute;
     left: 50%;
     top: 50%;
-    transform: translate(-50%,-50%);
+    @include transform("translate(-50%,-50%)");
 }
 /*
  * Animation Keyframes
 */
 
 @keyframes clockHandSpin {
-    from{transform: rotate(0deg)}
-    to{transform: rotate(360deg)}
+    from{ @include transform("rotate(0deg)");}
+    to{ @include transform("rotate(360deg)");}
 }
 @keyframes loading {
     from {width: 0%}
@@ -76,9 +90,7 @@ body {
     width: 90%;
     max-width: 550px;
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%,-50%);
+    @include center-me();
 }
 
 #tab-container{
@@ -87,8 +99,10 @@ body {
     height: 100px;
     margin: 0;
     border-bottom: 1px solid $black-one;
+    outline: none;
     #tab-stopwatch {
         float: right;
+        outline: none;
     }
     .tab-title {
         margin: 0px;
@@ -96,7 +110,9 @@ body {
         width: 275px;
         position: relative;
         height: 100%;
+        outline: none;
         h1 {
+            outline: none;
             margin:0px;
             font-family: "Roboto",sans-serif;
             font-size: 25px;
@@ -112,7 +128,7 @@ body {
                 background-color: $orange;
                 width: 0px;
                 margin: 0 auto;
-                transition: width .5s ease;
+                @include transition("width .5s ease");
             }
         }
     }
@@ -165,7 +181,7 @@ body {
     border-radius: 20px;
     @include center-me-horiz();
     bottom:58px;
-    transform-origin:center 32px;
+    @include transform-origin("center 32px");
     @include transition("all 500ms ease-in-out");
 }
 
@@ -173,12 +189,9 @@ body {
  * Set Timer Form
 */
 #timer {
-    left: 50%;
     width: 252px;
-    position: absolute;
     text-align: center;
-    top: 50%;
-    transform: translate(-50%,-50%);
+    @include center-me();
     border-bottom: 2px solid $black-two;
 }
 input[type=number]::-webkit-inner-spin-button,
@@ -186,6 +199,10 @@ input[type=number]::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
+input[type='number'] {
+    -moz-appearance:textfield;
+}
+
 ::-webkit-input-placeholder {
       color:$black-two;
 }
@@ -197,6 +214,9 @@ input[type=number]::-webkit-outer-spin-button {
 }
 :-ms-input-placeholder {
       color:$black-two;
+}
+:placeholder{
+    color: $black-two;
 }
 #time-input-container {
     display: inline-block;
@@ -230,8 +250,7 @@ input[type=number]::-webkit-outer-spin-button {
     width: 0%;
     @include transition("width .5s ease") ;
     position: absolute;
-    left:50%;
-    transform: translateX(-50%);
+    @include center-me-horiz();
 }
 .time-input:focus ~ .underline:after {
     width: 100%;
