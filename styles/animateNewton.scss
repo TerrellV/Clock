@@ -27,17 +27,10 @@
 
 #container {
     @include center-me-horiz();
-    width: 180px;
-    height: 250px;
-    &:before {
-        height: 3px;
-        display: block;
-        width: 100%;
-        background-color: $black-one;
-        content: '';
-        position: absolute;
-        top: 42px;
-    }
+    width: 120px;
+    height: 120px;
+    margin-top: 40px;
+    border-top: 2px solid $black-one;
     #ball-container-m {
         @include center-me();
     }
@@ -47,13 +40,13 @@
 }
 .ball-container {
     @include center-me-vert();
-    height: 160px;
-    width: 60px;
-    transform-origin: center top;
+    height: 120px;
+    width: 40px;
+    @include transform-origin("center top");
 }
 .string {
     @include center-me-horiz();
-    height: 100px;
+    height: 80px;
     width: 2px;
     background-color: $black-one;
     z-index: -1;
@@ -62,8 +55,8 @@
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
-    height: 60px;
-    width: 60px;
+    height: 40px;
+    width: 40px;
     border-radius: 50%;
     background-color: $orange;
     bottom: 0px;

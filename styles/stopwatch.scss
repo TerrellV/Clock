@@ -3,7 +3,7 @@
     text-align: center;
     width: 100%;
     position: absolute;
-    @include center-me();
+    margin-top:200px;
     h2{
         display: inline-block;
         bottom: 0px;
@@ -27,7 +27,7 @@
 
 #lapTimes-contianer {
     border-top: 2px solid $black-one;
-    height: 250px;
+    height: 300px;
     width: 100%;
     position: absolute;
     bottom: 70px;
@@ -50,12 +50,14 @@
 }
 #lapTimes-table {
     position: absolute;
-    bottom: 110px;
+    bottom: 170px;
     height: 30px;
     width: 100%;
     ul {
         list-style-type: none;
-        margin-left: 10%;
+        border: 2px solid $black-one;
+        width: 90%;
+        @include center-me-horiz();
     }
     li {
         display: inline-block;
@@ -64,6 +66,7 @@
         font-family: "Roboto";
         font-weight: 300;
         letter-spacing: 2px;
-        margin: 0 8%;
+        padding: 0 10px; 
+        background-color: $orange;
     }
 }

@@ -592,16 +592,10 @@ input:focus {
   -ms-transform: translateX(-50%);
   -o-transform: translateX(-50%);
   transform: translateX(-50%);
-  width: 180px;
-  height: 250px; }
-  #container:before {
-    height: 3px;
-    display: block;
-    width: 100%;
-    background-color: #333333;
-    content: '';
-    position: absolute;
-    top: 42px; }
+  width: 120px;
+  height: 120px;
+  margin-top: 40px;
+  border-top: 2px solid #333333; }
   #container #ball-container-m {
     position: absolute;
     left: 50%;
@@ -622,8 +616,12 @@ input:focus {
   -ms-transform: translateY(-50%);
   -o-transform: translateY(-50%);
   transform: translateY(-50%);
-  height: 160px;
-  width: 60px;
+  height: 120px;
+  width: 40px;
+  -webkit-transform-origin: center top;
+  -moz-transform-origin: center top;
+  -ms-transform-origin: center top;
+  -o-transform-origin: center top;
   transform-origin: center top; }
 
 .string {
@@ -634,7 +632,7 @@ input:focus {
   -ms-transform: translateX(-50%);
   -o-transform: translateX(-50%);
   transform: translateX(-50%);
-  height: 100px;
+  height: 80px;
   width: 2px;
   background-color: #333333;
   z-index: -1; }
@@ -643,8 +641,8 @@ input:focus {
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-  height: 60px;
-  width: 60px;
+  height: 40px;
+  width: 40px;
   border-radius: 50%;
   background-color: #EE7C4B;
   bottom: 0px; }
@@ -668,14 +666,7 @@ input:focus {
   text-align: center;
   width: 100%;
   position: absolute;
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  -webkit-transform: translate(-50%,-50%);
-  -moz-transform: translate(-50%,-50%);
-  -ms-transform: translate(-50%,-50%);
-  -o-transform: translate(-50%,-50%);
-  transform: translate(-50%,-50%); }
+  margin-top: 200px; }
   #sw-timer-container h2 {
     display: inline-block;
     bottom: 0px;
@@ -695,7 +686,7 @@ input:focus {
  */
 #lapTimes-contianer {
   border-top: 2px solid #333333;
-  height: 250px;
+  height: 300px;
   width: 100%;
   position: absolute;
   bottom: 70px; }
@@ -722,12 +713,20 @@ input:focus {
 
 #lapTimes-table {
   position: absolute;
-  bottom: 110px;
+  bottom: 170px;
   height: 30px;
   width: 100%; }
   #lapTimes-table ul {
     list-style-type: none;
-    margin-left: 10%; }
+    border: 2px solid #333333;
+    width: 90%;
+    position: absolute;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    -o-transform: translateX(-50%);
+    transform: translateX(-50%); }
   #lapTimes-table li {
     display: inline-block;
     font-size: 18px;
@@ -735,6 +734,7 @@ input:focus {
     font-family: "Roboto";
     font-weight: 300;
     letter-spacing: 2px;
-    margin: 0 8%; }
+    padding: 0 10px;
+    background-color: #EE7C4B; }
 
 /*# sourceMappingURL=main.css.map */
