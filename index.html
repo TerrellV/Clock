@@ -23,16 +23,18 @@
 </head>
 
 <body>
+
     <div id="app" class="mdl-shadow--6dp">
         <!-- Tabs for switching between clock type -->
-        <div id="tab-container">
-            <a href="#/">
-                <div id='tab-timer'class="tab-title">
+
+        <div id="tab-container" ng-init="tab=1">
+            <a href="#/" ng-click="tab=1">
+                <div id='tab-timer'class="tab-title" ng-class="{'active-tab':tab===1 }">
                     <h1 id="timer-text">Timer</h1>
                 </div>
             </a>
-            <a href="#/stopwatch">
-                <div id="tab-stopwatch" class="tab-title">
+            <a href="#/stopwatch" ng-click="tab = 2">
+                <div id="tab-stopwatch" class="tab-title" ng-class="{ 'active-tab': tab===2 }">
                     <h1 id="stopwatch-text">Stopwatch</h1>
                 </div>
             </a>

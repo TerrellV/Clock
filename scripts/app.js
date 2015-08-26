@@ -10,7 +10,7 @@ app.config(function($routeProvider){
         .when('/stopwatch', {
             templateUrl: 'partial/stopwatch.html', controller:'stopwatchController'
         })
-})
+});
 
 app.controller('mainController', function($scope, factory ) {
 

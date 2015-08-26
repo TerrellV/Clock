@@ -110,17 +110,19 @@ body {
                 position: relative;
                 top: 36px;
                 background-color: $orange;
-                width: 0%;
+                width: 0px;
                 margin: 0 auto;
                 transition: width .5s ease;
             }
         }
-        &:hover > h1:after{
+    }
+    .active-tab {
+        h1{
+            color: $light-grey;
+        }
+        h1:after {
             width: 100%;
         }
-    }
-    .tab-title-active {
-        color: $light-grey;
     }
 }
 

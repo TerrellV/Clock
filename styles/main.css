@@ -66,13 +66,13 @@ body {
         position: relative;
         top: 36px;
         background-color: #EE7C4B;
-        width: 0%;
+        width: 0px;
         margin: 0 auto;
         transition: width .5s ease; }
-    #tab-container .tab-title:hover > h1:after {
-      width: 100%; }
-  #tab-container .tab-title-active {
+  #tab-container .active-tab h1 {
     color: #CCCCCC; }
+  #tab-container .active-tab h1:after {
+    width: 100%; }
 
 /*
  * Animated clocks
