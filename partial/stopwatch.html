@@ -36,6 +36,13 @@
 
 <div id="lapTimes-contianer">
     <button type="button" ng-click="addLapTime()"name="button" id="btn-lap">Record Lap</button>
+    <div id="lapTimes-table"class="">
+        <ul ng-repeat="value in lapTimes">
+            <li >{{ value.number }}</li>
+            <li >{{ value.laptime }}</li>
+            <li >{{ value.totalTimeText }}</li>
+        </ul>
+    </div>
 </div>
 
 <!-- bottom action buttons -->

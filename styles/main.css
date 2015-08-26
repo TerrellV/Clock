@@ -612,4 +612,21 @@ input:focus {
   #btn-lap:hover {
     border-color: #EE7C4B; }
 
+#lapTimes-table {
+  position: absolute;
+  bottom: 110px;
+  height: 30px;
+  width: 100%; }
+  #lapTimes-table ul {
+    list-style-type: none;
+    margin-left: 10%; }
+  #lapTimes-table li {
+    display: inline-block;
+    font-size: 18px;
+    color: #CCCCCC;
+    font-family: "Roboto";
+    font-weight: 300;
+    letter-spacing: 2px;
+    margin: 0 8%; }
+
 /*# sourceMappingURL=main.css.map */

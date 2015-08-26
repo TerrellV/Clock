@@ -19,6 +19,11 @@
                 "minutes": 0,
                 "seconds": 0
             }
+            var lapTimeObject = {
+                "hours": 0,
+                "minutes": 0,
+                "seconds": 0
+            }
             factory.multipliers = function () {
                 return multipliers;
             }
@@ -29,6 +34,10 @@
             // values for new stopwatch from scratch
             factory.newStopwatchVals = function () {
                 return newStopwatchVals;
+            }
+            // new values for starting lap time
+            factory.newLapTimes = function () {
+                return lapTimeObject;
             }
             // animation for stopwatch
             // after ( total animation duration ) milliseconds clone purple and blue to start second time

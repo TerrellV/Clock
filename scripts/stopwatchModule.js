@@ -2,7 +2,13 @@
     var app = angular.module('stopwatch', ['factories'])
         .controller('stopwatchController', function($scope, factory) {
 
-            var lapTimes = [];
+            $scope.lapTimes = [
+                {
+                    "number" : "01",
+                    "laptime" : "22s",
+                    "totalTimeText" : "24m 42s"
+                },
+            ];
 
             $scope.startAnimation = factory.startAnimation;
             // remove class to stop animation and use factory to start it again
@@ -15,14 +21,33 @@
             $scope.showMinutes = true;
             $scope.showSeconds = true;
 
-            /* add tracking ability of below items
-            I need an object with:
-                number count
-                lap time
-                total time
-            */
+            /* add tracking ability of below items */
+            var prevTime;
+
             $scope.addLapTime = function() {
-                lapTimes.push({})
+                var totalTimeText,
+                    lapTime;
+                var lapNumber = $scope.lapTimes.length + 1;
+
+                if (lapNumber < 10 ) {
+                    lapNumber  = "0" + lapNumber;
+                }
+                if ( $scope.minutes === 0 && $scope.hours === 0) {
+                    totalTimeText = $scope.seconds + "s";
+                }
+                if ( $scope.minutes !== 0 ) {
+                    totalTimeText = $scope.minutes + "m " + $scope.seconds + "s " ;
+                }
+                if ( $scope.hours !== 0 ) {
+                    totalTimeText =  $scope.hours + "h " + $scope.minutes + "m " + $scope.seconds + "s " ;
+                }
+
+                // keep track of laptime by subtrackting date objects
+
+                var lapTime = $scope.seconds - prevTime;
+
+                $scope.lapTimes.push( {"number": lapNumber, "laptime":lapTime, "totalTimeText": totalTimeText} );
+                prevTime = $scope.seconds;
             }
             $scope.start = function() {
                 $scope.startTime( factory.newStopwatchVals() );
@@ -82,7 +107,9 @@
                 // clear lap times array;
             }
             $scope.startTime = function( given ) {
+
                 paused = false;
+
                 $scope.hours =  given.hours;
                 $scope.minutes = given.minutes;
                 $scope.seconds = given.seconds;
@@ -126,7 +153,5 @@
                 ticker();
 
             }
-
-
-        })
+        });
 })()
