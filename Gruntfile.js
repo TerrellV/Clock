@@ -10,14 +10,14 @@ module.exports = function(grunt) {
         },
         watch: {
             sass: {
-                files: ['styles/*.scss','views/*.hjs'],
+                files: ['styles/*.scss'],
                 tasks: ['sass'],
                 options: {
                     livereload: true
                 },
             },
             js: {
-                files: ['javascripts/*.js'],
+                files: ['scripts/*.js'],
                 tasks: ['sass'],
                 options: {
                     livereload: true
