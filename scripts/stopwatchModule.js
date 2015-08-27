@@ -5,14 +5,14 @@
             // for ng repeat list of lap times
             $scope.lapTimes = [];
 
-            $scope.prevValue = {
+                $scope.prevValue = {
                     "hours" : 0,
                     "minutes" :0 ,
                     "seconds" : 0
             };
 
             $scope.startAnimation = factory.startAnimation;
-            // remove class to stop animation and use factory to start it again
+
             var paused = false;
 
             $scope.hours = "0";
@@ -26,9 +26,9 @@
             // var prevTime;
 
             $scope.addLapTime = function() {
-                var totalTimeText,
-                    lapTime;
+                var totalTimeText;
                 var lapNumber = $scope.lapTimes.length + 1;
+
                 if (lapNumber < 10 ) {
                     lapNumber  = "0" + lapNumber;
                 }
@@ -45,7 +45,7 @@
                 // keep track of laptime by subtrackting previous time from current
                 // freez and store the time when pushed
 
-                lapTime = {
+                var lapTime = {
                         "hours" : $scope.hours - $scope.prevValue.hours,
                         "minutes" : $scope.minutes - $scope.prevValue.minutes,
                         "seconds" : $scope.seconds - $scope.prevValue.seconds
@@ -73,6 +73,14 @@
                 };
             }
 
+            $scope.reset = function() {
+                if (paused !== true){
+                    $scope.pause();
+                }
+                $scope.hours = 0;
+                $scope.minutes = 0;
+                $scope.seconds = 0;
+            }
 
             $scope.start = function() {
                 $scope.startTime( factory.newStopwatchVals() );
@@ -122,9 +130,8 @@
             $scope.reset = function() {
                 if ( paused === false ) {
                     $scope.pause();
-                } else {
-
                 }
+                $scope.lapTimes = [];
                 $scope.hours =  0;
                 $scope.minutes = 0;
                 $scope.seconds = 0;
