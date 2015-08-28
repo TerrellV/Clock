@@ -16,6 +16,9 @@ app.controller('mainController', function($scope, factory ) {
 
     // load in hardcoded values from factory
     var multipliers = factory.multipliers();
+    // load sound.
+    var notif = document.getElementById("chime");
+    notif.load();
 
     $scope.given = {
         "hours": false,
@@ -181,6 +184,7 @@ app.controller('mainController', function($scope, factory ) {
             if ($scope.displayHours === 0 && $scope.displayMinutes ===0 && $scope.displaySeconds === 0) {
                 $(".clock-hand").css("animation-play-state", "paused");
                 finished = false;
+                chime(); // play sound
                 return '';
             }
             if ($scope.displayMinutes === 0 && $scope.displaySeconds === 0) {
@@ -211,6 +215,11 @@ app.controller('mainController', function($scope, factory ) {
             // give loading bar an animation duration
             $("#loading-inner").css("animation-duration", timeValues.totalMs +'ms');
         }
+    }
+
+    // when timer hits zero .... this function should be called to make sound
+    function chime () {
+        notif.play();
     }
 
     // DEFINE show stuff when traditional is clicked and timer is started. Adding css

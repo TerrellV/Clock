@@ -5,10 +5,10 @@
             // for ng repeat list of lap times
             $scope.lapTimes = [];
 
-                $scope.prevValue = {
-                    "hours" : 0,
-                    "minutes" :0 ,
-                    "seconds" : 0
+            $scope.prevValue = {
+                "hours" : 0,
+                "minutes" :0 ,
+                "seconds" : 0
             };
 
             $scope.startAnimation = factory.startAnimation;
@@ -58,10 +58,9 @@
                 props.map( function( prop, index ) {
                     if ( lapTime[ prop ]!== 0 ) {
                         totalLapTime += (lapTime[ prop ] + letters[ index ] + " ").toString();
-                        console.log( prop, lapTime[prop] );
                     }
                 })
-
+                console.log($scope.seconds,$scope.prevValue.seconds,lapTime.seconds);
                 console.log( '------' );
 
                 $scope.lapTimes.push( {"number": lapNumber, "laptime":totalLapTime, "totalTimeText": totalTimeText} );
@@ -71,15 +70,6 @@
                     "minutes" : $scope.minutes,
                     "seconds" : $scope.seconds
                 };
-            }
-
-            $scope.reset = function() {
-                if (paused !== true){
-                    $scope.pause();
-                }
-                $scope.hours = 0;
-                $scope.minutes = 0;
-                $scope.seconds = 0;
             }
 
             $scope.start = function() {
@@ -130,6 +120,11 @@
             $scope.reset = function() {
                 if ( paused === false ) {
                     $scope.pause();
+                }
+                $scope.prevValue = {
+                    "hours": 0,
+                    "minutes": 0,
+                    "seconds": 0
                 }
                 $scope.lapTimes = [];
                 $scope.hours =  0;
