@@ -367,6 +367,7 @@ input:focus {
     font-family: "Roboto",sans-serif;
     font-weight: 400;
     color: $light-grey;
+    letter-spacing: 1px;
     outline: none;
     border-bottom: 1px solid $black-two;
 }
@@ -410,6 +411,10 @@ input:focus {
     label {
         cursor:pointer;
         position: relative;
+        font-family: "Roboto", sans-serif;
+        font-weight: 300;
+        letter-spacing: 1px;
+        color: $black-three;
         &:hover {
             // edit hover color of text
             color: $light-grey;

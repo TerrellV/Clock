@@ -36,36 +36,54 @@ app.controller('mainController', function($scope, factory ) {
     // ON CLICK OF START determine which to show
     $scope.start = function() {
 
-        // init values
-        paused = false;
-        hasBeenReset = false;
-
-        // if pomo is clicked
-        if ( $scope.isActive === false ){
-            $scope.given.seconds = false; // for ng-hide. Show seconds
-            $scope.hideStart = true;
-            $scope.hideTaskInput = true;
-            $scope.dontShowClockOptions = true;
-            $scope.showPomoScreen();
-
-            $scope.startTime( factory.pomoCLockValues() );
+        if ( $scope.time === undefined ) {
+            alert("Please specify a time for your timer");
         } else {
-            // reset what values to show
-            $scope.given.hours = false;
-            $scope.given.minutes = false;
-            $scope.given.seconds = false;
-            console.log('run normal');
-            $scope.startLoad = 'startLoad';
-            $scope.dontShowClockOptions = true;
-            $scope.hideStart = true;
-            $scope.showInput = true;
-            $scope.running = true;
-            $scope.showTime = true;
-            $scope.showRunningScreen();
-            // animation for secdons hand
-            $("#clock-hand-sec").css("animation-play-state", "running");
 
-            $scope.startTime( $scope.time );
+            var props = ["hours","minutes","seconds"];
+            var testOne = [];
+
+            props.map(function(prop) {
+                var value = $scope.time[prop];
+                if (value === null || value === 0 || value === undefined) {
+                    testOne.push(value);
+                };
+            });
+            if (testOne.length === 3) {alert('Please Specify a Time');}
+            else {
+                
+                // init values
+                paused = false;
+                hasBeenReset = false;
+
+                // if pomo is selected
+                if ( $scope.isActive === false ){
+                    $scope.given.seconds = false; // for ng-hide. Show seconds
+                    $scope.hideStart = true;
+                    $scope.hideTaskInput = true;
+                    $scope.dontShowClockOptions = true;
+                    $scope.showPomoScreen();
+
+                    $scope.startTime( factory.pomoCLockValues() );
+                } else {
+                    // reset what values to show
+                    $scope.given.hours = false;
+                    $scope.given.minutes = false;
+                    $scope.given.seconds = false;
+                    console.log('run normal');
+                    $scope.startLoad = 'startLoad';
+                    $scope.dontShowClockOptions = true;
+                    $scope.hideStart = true;
+                    $scope.showInput = true;
+                    $scope.running = true;
+                    $scope.showTime = true;
+                    $scope.showRunningScreen();
+                    // animation for secdons hand
+                    $("#clock-hand-sec").css("animation-play-state", "running");
+
+                    $scope.startTime( $scope.time );
+                }
+            }
         }
     }
 
