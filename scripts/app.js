@@ -19,6 +19,8 @@ app.controller('mainController', function($scope, factory ) {
     // load sound.
     var notif = document.getElementById("chime");
     notif.load();
+    // detect if app has been reset
+    var hasBeenReset = false;
 
     $scope.given = {
         "hours": false,
@@ -34,8 +36,9 @@ app.controller('mainController', function($scope, factory ) {
     // ON CLICK OF START determine which to show
     $scope.start = function() {
 
-        // init value
+        // init values
         paused = false;
+        hasBeenReset = false;
 
         // if pomo is clicked
         if ( $scope.isActive === false ){
@@ -44,10 +47,6 @@ app.controller('mainController', function($scope, factory ) {
             $scope.hideTaskInput = true;
             $scope.dontShowClockOptions = true;
             $scope.showPomoScreen();
-            // initiate start with static time values for 25 minutes
-
-            // used factory values for new time
-            // var newTime = ;
 
             $scope.startTime( factory.pomoCLockValues() );
         } else {
@@ -120,35 +119,48 @@ app.controller('mainController', function($scope, factory ) {
     }
     $scope.reset = function() {
         if( $scope.isActive === false ) {
-            console.log('pomo clock');
-        } else {
-            console.log('traditional clock');
-            $scope.showInput = false;
-            $scope.paused = false;
-            $scope.showTime = false;
-            $scope.dontShowClockOptions = false;
-            $scope.bigClock = false;
+            console.log('pomo clock reset');
+            $scope.playPauseAnimation = false;
             $scope.clockContainer = false;
-            $scope.bigHandM = false;
+            $scope.moveTimeContainer = {
+                "top": "270px"
+            }
+            $scope.moveTasksDown = false;
+            $scope.displayMinutes = 25;
+            $scope.taskList = [];
+            $scope.taskInput = undefined;
+            $scope.showTasks = true;
+            $scope.showTime = true;
+            $scope.showInput = true;
+            $scope.given.hours = true;
+            $scope.given.seconds = true;
+        } else {
+            console.log('traditional clock Reset');
+            $scope.paused = false;
+            $scope.clockContainer = false;
             $scope.running = false;
             $scope.startLoad = false;
-            $scope.hideStart = false;
             $scope.playPauseAnimation = false;
-            // clear all values
             $scope.displayHours = 0;
             $scope.displayMinutes = 0;
             $scope.displaySeconds = 0;
-            $scope.time.totalMs = 0;
-            $scope.bigHandS = false;
-            if ( paused === false ) {
-                paused = true;
-            }
+            $scope.showInput = false;
+            $scope.showTime = false;
+            // clear all values
         }
+        if ( paused === false ) {
+            paused = true;
+        }
+        // $scope.time.totalMs = 0;
+        $scope.bigClock = false;
+        $scope.bigHandM = false;
+        $scope.dontShowClockOptions = false;
+        $scope.hideStart = false;
+        $scope.bigHandS = false;
+        hasBeenReset = true;
     }
     // DEFINE : begin timmer
     $scope.startTime = function( timeValues ) {
-
-        console.log(timeValues);
 
         enteredProps = Object.getOwnPropertyNames( timeValues );
         var filteredProps = enteredProps.filter(function(prop) {
@@ -184,7 +196,7 @@ app.controller('mainController', function($scope, factory ) {
             if ($scope.displayHours === 0 && $scope.displayMinutes ===0 && $scope.displaySeconds === 0) {
                 $(".clock-hand").css("animation-play-state", "paused");
                 finished = false;
-                chime(); // play sound
+                if ( hasBeenReset === false ){ chime(); } // plaly sound
                 return '';
             }
             if ($scope.displayMinutes === 0 && $scope.displaySeconds === 0) {
@@ -250,7 +262,6 @@ app.controller('mainController', function($scope, factory ) {
     $scope.taskList = [];
 
     $scope.updateTasks = function ( taskInput ) {
-        console.log(taskInput);
         if ( $scope.taskList.length >= 3) {
             $scope.taskInput = undefined;
             console.log('ERROR use only three tasks');
@@ -284,19 +295,14 @@ app.controller('mainController', function($scope, factory ) {
             $scope.given.seconds = true;
             $scope.isActive = false;
         } else {
-            console.log('where I want to be');
-
-            traditionalScreen();
-            function traditionalScreen() {
-                $scope.showTasks = false;
-                $scope.showInput = false;
-                $scope.showTime = false;
-                $scope.clockContainer = {
-                    "top": "150px"
-                };
-                $scope.moveTimeContainer = {
-                    "top": "475px"
-                }
+            $scope.showTasks = false;
+            $scope.showInput = false;
+            $scope.showTime = false;
+            $scope.clockContainer = {
+                "top": "150px"
+            };
+            $scope.moveTimeContainer = {
+                "top": "475px"
             }
             $scope.isActive = true;
             $scope.traditional = true;
