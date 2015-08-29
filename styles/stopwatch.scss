@@ -3,7 +3,7 @@
     text-align: center;
     width: 100%;
     position: absolute;
-    margin-top:200px;
+    margin-top:185px;
     h2{
         display: inline-block;
         bottom: 0px;
@@ -20,35 +20,50 @@
         color: $light-grey;
     }
 }
+/*
+  * lap button
+*/
+#lap-btn-container {
+  height: 50px;
+  position: absolute;
+  width: 100%;
+  top: 390px;
+}
 
+#btn-lap {
+    outline: none;
+    @include center-me-horiz();
+    padding: 2% 5%;
+    background-color: transparent;
+    border-radius: 50px;
+    font-family: "Roboto",sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 2px;
+}
+.btn-lap-active {
+  color: $light-grey;
+  border: 2px solid $light-grey;
+  &:hover {
+    border: 2px solid $orange;
+  }
+}
+.btn-lap-disabled {
+    color: $black-one;
+    border: 2px solid $black-one;
+}
 /*
   *lap times
  */
 
 #lapTimes-contianer {
-    border-top: 2px solid $black-one;
-    height: 300px;
-    width: 100%;
-    position: absolute;
-    bottom: 70px;
+  border-top: 1px solid $black-one;
+  height: 250px;
+  width: 100%;
+  position: absolute;
+  bottom: 70px;
 }
 
-#btn-lap {
-    position: absolute;
-    outline: none;
-    @include center-me-horiz();
-    top: 30px;
-    padding: 10px 30px;
-    border: 2px solid $light-grey;
-    background-color: transparent;
-    border-radius: 50px;
-    color: $light-grey;
-    font-family: "Roboto",sans-serif;
-    letter-spacing: 2px;
-    &:hover {
-        border-color: $orange;
-    }
-}
 #lapTimes-table {
     position: absolute;
     bottom: 170px;

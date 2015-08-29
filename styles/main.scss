@@ -101,13 +101,14 @@ body {
     border-bottom: 1px solid $black-one;
     outline: none;
     #tab-stopwatch {
-        float: right;
+        position: absolute;
+        right: 0px;
         outline: none;
     }
     .tab-title {
         margin: 0px;
         display: inline-block;
-        width: 275px;
+        width: 50%;
         position: relative;
         height: 100%;
         outline: none;
@@ -483,7 +484,7 @@ input:focus {
     button {
         border: 0px;
         border-radius: 20px;
-        padding: 10px 40px;
+        padding: 2% 5%;
     }
     #normalButton {
         margin-right: 2%;
@@ -494,15 +495,15 @@ input:focus {
     .btn-active {
         outline: none;
         background-color: $orange;
+        border: 2px solid $orange;
         color: white;
         letter-spacing: 2px;
     }
     .btn-inactive {
-        padding: 8px 40px;
         letter-spacing: 2px;
         outline: none;
         background-color: transparent;
-        border: 2px solid $orange;
+        border: 2px solid $light-grey;
         color: white;
     }
 }

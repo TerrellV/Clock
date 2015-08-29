@@ -13,6 +13,8 @@
 
             $scope.startAnimation = factory.startAnimation;
 
+            disableLapButton();
+
             var paused = false;
 
             $scope.hours = "0";
@@ -22,56 +24,69 @@
             $scope.showMinutes = true;
             $scope.showSeconds = true;
 
-            /* add tracking ability of below items */
-            // var prevTime;
-
             $scope.addLapTime = function() {
-                var totalTimeText;
-                var lapNumber = $scope.lapTimes.length + 1;
+              var totalTimeText;
+              var lapNumber = $scope.lapTimes.length + 1;
 
-                if (lapNumber < 10 ) {
-                    lapNumber  = "0" + lapNumber;
-                }
-                if ( $scope.minutes === 0 && $scope.hours === 0) {
-                    totalTimeText = $scope.seconds + "s";
-                }
-                if ( $scope.minutes !== 0 ) {
-                    totalTimeText = $scope.minutes + "m " + $scope.seconds + "s " ;
-                }
-                if ( $scope.hours !== 0 ) {
-                    totalTimeText =  $scope.hours + "h " + $scope.minutes + "m " + $scope.seconds + "s " ;
-                }
+              if (lapNumber < 10 ) {
+                  lapNumber  = "0" + lapNumber;
+              }
+              if ( $scope.minutes === 0 && $scope.hours === 0) {
+                  totalTimeText = $scope.seconds + "s";
+              }
+              if ( $scope.minutes !== 0 ) {
+                  totalTimeText = $scope.minutes + "m " + $scope.seconds + "s " ;
+              }
+              if ( $scope.hours !== 0 ) {
+                  totalTimeText =  $scope.hours + "h " + $scope.minutes + "m " + $scope.seconds + "s " ;
+              }
 
-                // keep track of laptime by subtrackting previous time from current
-                // freez and store the time when pushed
+              // keep track of laptime by subtrackting previous time from current
+              // freez and store the time when pushed
 
-                var lapTime = {
-                        "hours" : $scope.hours - $scope.prevValue.hours,
-                        "minutes" : $scope.minutes - $scope.prevValue.minutes,
-                        "seconds" : $scope.seconds - $scope.prevValue.seconds
-                };
+              var lapTime = {
+                      "hours" : $scope.hours - $scope.prevValue.hours,
+                      "minutes" : $scope.minutes - $scope.prevValue.minutes,
+                      "seconds" : $scope.seconds - $scope.prevValue.seconds
+              };
 
-                var letters = ['h','m','s'];
-                var props = Object.getOwnPropertyNames(lapTime);
-                var totalLapTime = '';
+              var letters = ['h','m','s'];
+              var props = Object.getOwnPropertyNames(lapTime);
+              var totalLapTime = '';
 
-                props.map( function( prop, index ) {
-                    if ( lapTime[ prop ]!== 0 ) {
-                        totalLapTime += (lapTime[ prop ] + letters[ index ] + " ").toString();
-                    }
-                })
-                console.log($scope.seconds,$scope.prevValue.seconds,lapTime.seconds);
-                console.log( '------' );
+              props.map( function( prop, index ) {
+                  if ( lapTime[ prop ]!== 0 ) {
+                      totalLapTime += (lapTime[ prop ] + letters[ index ] + " ").toString();
+                  }
+              })
+              console.log( '------', $scope.lapTimes.length );
 
-                $scope.lapTimes.push( {"number": lapNumber, "laptime":totalLapTime, "totalTimeText": totalTimeText} );
+              $scope.lapTimes.push( {"number": lapNumber, "laptime":totalLapTime, "totalTimeText": totalTimeText} );
 
-                $scope.prevValue = {
-                    "hours" : $scope.hours,
-                    "minutes" : $scope.minutes,
-                    "seconds" : $scope.seconds
-                };
+              if ( $scope.lapTimes.length >= 4  ) {
+                disableLapButton();
+              }
+
+              $scope.prevValue = {
+                  "hours" : $scope.hours,
+                  "minutes" : $scope.minutes,
+                  "seconds" : $scope.seconds
+              };
+
+
             }
-
+            // disable the laptime button
+            function disableLapButton () {
+              $("#btn-lap").attr('disabled','disabled');
+              // remove clas
+              $scope.btnLapClass = "btn-lap-disabled"
+            }
+            // enable laptime button
+            function enableLapButton () {
+              $("#btn-lap").removeAttr('disabled');
+              // change class
+              $scope.btnLapClass = "btn-lap-active";
+            }
             $scope.start = function() {
                 $scope.startTime( factory.newStopwatchVals() );
                 factory.startAnimation();
@@ -79,7 +94,7 @@
                 $scope.hidePause = false;
                 $scope.hideStart = true;
                 $scope.showResume = false;
-
+                enableLapButton();
                 var id = window.setTimeout(enablePause, 2000);
                 function enablePause () {
                     document.getElementById('btn-pause').removeAttribute('disabled')
@@ -93,6 +108,7 @@
                 $('#ball-container-l').removeClass('animated-left');
                 $('#ball-container-r').removeClass('animated-right');
 
+                disableLapButton();
                 $scope.showResume = true;
                 window.clearTimeout( factory.totalTimeout );
                 var id = window.setTimeout(enableResume, 1000);
@@ -102,7 +118,7 @@
             }
             $scope.resume = function() {
                 paused = false;
-
+                enableLapButton();
                 // initiate animation
                 factory.startAnimation();
 
