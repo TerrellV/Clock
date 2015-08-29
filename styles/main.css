@@ -56,12 +56,13 @@ body {
   border-bottom: 1px solid #333333;
   outline: none; }
   #tab-container #tab-stopwatch {
-    float: right;
+    position: absolute;
+    right: 0px;
     outline: none; }
   #tab-container .tab-title {
     margin: 0px;
     display: inline-block;
-    width: 275px;
+    width: 50%;
     position: relative;
     height: 100%;
     outline: none; }
@@ -522,7 +523,7 @@ input:focus {
   #clock-type button {
     border: 0px;
     border-radius: 20px;
-    padding: 10px 40px; }
+    padding: 2% 5%; }
   #clock-type #normalButton {
     margin-right: 2%; }
   #clock-type #pomoButton {
@@ -530,14 +531,14 @@ input:focus {
   #clock-type .btn-active {
     outline: none;
     background-color: #EE7C4B;
+    border: 2px solid #EE7C4B;
     color: white;
     letter-spacing: 2px; }
   #clock-type .btn-inactive {
-    padding: 8px 40px;
     letter-spacing: 2px;
     outline: none;
     background-color: transparent;
-    border: 2px solid #EE7C4B;
+    border: 2px solid #CCCCCC;
     color: white; }
 
 /*
@@ -671,7 +672,7 @@ input:focus {
   text-align: center;
   width: 100%;
   position: absolute;
-  margin-top: 200px; }
+  margin-top: 185px; }
   #sw-timer-container h2 {
     display: inline-block;
     bottom: 0px;
@@ -687,17 +688,15 @@ input:focus {
     color: #CCCCCC; }
 
 /*
-  *lap times
- */
-#lapTimes-contianer {
-  border-top: 2px solid #333333;
-  height: 300px;
-  width: 100%;
+  * lap button
+*/
+#lap-btn-container {
+  height: 50px;
   position: absolute;
-  bottom: 70px; }
+  width: 100%;
+  top: 390px; }
 
 #btn-lap {
-  position: absolute;
   outline: none;
   position: absolute;
   left: 50%;
@@ -706,16 +705,33 @@ input:focus {
   -ms-transform: translateX(-50%);
   -o-transform: translateX(-50%);
   transform: translateX(-50%);
-  top: 30px;
-  padding: 10px 30px;
-  border: 2px solid #CCCCCC;
+  padding: 2% 5%;
   background-color: transparent;
   border-radius: 50px;
-  color: #CCCCCC;
   font-family: "Roboto",sans-serif;
+  font-size: 14px;
+  font-weight: 500;
   letter-spacing: 2px; }
-  #btn-lap:hover {
-    border-color: #EE7C4B; }
+
+.btn-lap-active {
+  color: #CCCCCC;
+  border: 2px solid #CCCCCC; }
+  .btn-lap-active:hover {
+    border: 2px solid #EE7C4B; }
+
+.btn-lap-disabled {
+  color: #333333;
+  border: 2px solid #333333; }
+
+/*
+  *lap times
+ */
+#lapTimes-contianer {
+  border-top: 1px solid #333333;
+  height: 250px;
+  width: 100%;
+  position: absolute;
+  bottom: 70px; }
 
 #lapTimes-table {
   position: absolute;
@@ -727,7 +743,6 @@ input:focus {
     position: relative;
     list-style-type: none;
     width: 100%;
-    border: 2px solid white;
     height: 30px; }
   #lapTimes-table li {
     display: inline-block;

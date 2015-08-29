@@ -21,29 +21,34 @@
     </div>
 </div>
 
-    <div id="sw-timer-container">
+<div id="sw-timer-container">
 
-        <h2 ng-show="showHours" id="sw-timer-hours">{{ hours }}</h2>
-        <span ng-show="showHours">h</span>
+    <h2 ng-show="showHours" id="sw-timer-hours">{{ hours }}</h2>
+    <span ng-show="showHours">h</span>
 
-        <h2 ng-show="showMinutes" id="sw-timer-minutes">{{ minutes }}</h2>
-        <span ng-show="showMinutes">m</span>
+    <h2 ng-show="showMinutes" id="sw-timer-minutes">{{ minutes }}</h2>
+    <span ng-show="showMinutes">m</span>
 
-        <h2 ng-show="showSeconds" id="sw-timer-seconds">{{ seconds }}</h2>
-        <span ng-show="showSeconds">s</span>
+    <h2 ng-show="showSeconds" id="sw-timer-seconds">{{ seconds }}</h2>
+    <span ng-show="showSeconds">s</span>
 
-    </div>
+</div>
+
+<div id="lap-btn-container">
+  <button type="button" ng-click="addLapTime()" ng-class="btnLapClass"name="button" id="btn-lap">
+    Record Lap
+  </button>;
+</div>
 
 <!-- lap times container -->
 <div id="lapTimes-contianer">
-    <button type="button" ng-click="addLapTime()"name="button" id="btn-lap">Record Lap</button>
-    <div id="lapTimes-table"class="">
-        <ul ng-repeat="value in lapTimes">
-            <li id="li-number">{{ value.number }}</li>
-            <li id="li-lap">Lap: {{ value.laptime }}</li>
-            <li id="li-total">Total: {{ value.totalTimeText }}</li>
-        </ul>
-    </div>
+  <div id="lapTimes-table"class="">
+      <ul ng-repeat="value in lapTimes">
+          <li id="li-number">{{ value.number }}</li>
+          <li id="li-lap">Lap: {{ value.laptime }}</li>
+          <li id="li-total">Total: {{ value.totalTimeText }}</li>
+      </ul>
+  </div>
 </div>
 
 <!-- bottom action buttons -->
