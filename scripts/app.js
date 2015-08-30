@@ -279,6 +279,13 @@ app.controller('mainController', function($scope, factory ) {
     // functions and content specific for task list functionality
     $scope.taskList = [];
 
+    // keypress event for enter on task input
+    $scope.testKeyCode = function(taskInput){
+        // event is a keyboard event object with various properties and values
+        if ( event.keyCode=== 13) { // if user clicks enter update Task
+            $scope.updateTasks( taskInput );
+        }
+    }
     $scope.updateTasks = function ( taskInput ) {
         if ( $scope.taskList.length >= 3) {
             $scope.taskInput = undefined;
@@ -356,4 +363,5 @@ app.controller('mainController', function($scope, factory ) {
             "bottom": "100px"
         }
     }
+
 });

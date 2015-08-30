@@ -60,7 +60,7 @@
                 var newtonTimeout = window.setTimeout(factory.cloneBoth, 2000);
             }
             return factory;
-        })
+        });
 
 
 })()
