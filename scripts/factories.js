@@ -1,7 +1,10 @@
 (function(){
-    var app = angular.module('factories',[])
+    angular.module('factories',[])
         // define simple multipliers factory used by timer function
-        .factory('factory', function(){
+        .factory('factory', make);
+
+            function make(){
+
             // OBJECT to work off of
             var factory = {};
             var multipliers = {
@@ -54,13 +57,11 @@
                 item.parentNode.replaceChild(newone, item);
             }
             factory.startAnimation = function () {
-                console.log('classes should have been added');
                 $('#ball-container-l').addClass('animated-left');
                 $('#ball-container-r').addClass('animated-right');
                 var newtonTimeout = window.setTimeout(factory.cloneBoth, 2000);
             }
             return factory;
-        });
-
+        };
 
 })()

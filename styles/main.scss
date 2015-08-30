@@ -388,6 +388,7 @@ input:focus {
     width: 100%;
 }
 #add-task-btn {
+    position: relative;
     display: inline-block;
     margin: 0 25px;
     top: 18px;
@@ -397,7 +398,7 @@ input:focus {
     background-color: $black-two;
     border: 0px;
     color: $light-grey;
-    position: relative;
+    outline: none;
     i {
         font-size: 18px;
         @include center-me();

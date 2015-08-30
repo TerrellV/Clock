@@ -1,5 +1,5 @@
 (function() {
-    var app = angular.module('stopwatch', ['factories'])
+    angular.module('myApp')
         .controller('stopwatchController', function($scope, factory) {
 
             // for ng repeat list of lap times
@@ -59,7 +59,6 @@
                       totalLapTime += (lapTime[ prop ] + letters[ index ] + " ").toString();
                   }
               })
-              console.log( '------', $scope.lapTimes.length );
 
               $scope.lapTimes.push( {"number": lapNumber, "laptime":totalLapTime, "totalTimeText": totalTimeText} );
 
