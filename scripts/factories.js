@@ -27,6 +27,8 @@
                 "minutes": 0,
                 "seconds": 0
             }
+            factory.awayFromTimer = false;
+            factory.stopclone = false;
             factory.multipliers = function () {
                 return multipliers;
             }
@@ -44,7 +46,6 @@
             }
             // animation for stopwatch
             // after ( total animation duration ) milliseconds clone purple and blue to start second time
-            factory.stopclone = false;
             factory.cloneBoth = function () {
                 factory.clone( 'ball-container-l' );
                 factory.clone( 'ball-container-r' );

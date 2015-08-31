@@ -27,14 +27,14 @@
     <div id="app" class="mdl-shadow--6dp">
         <!-- Tabs for switching between clock type -->
 
-        <div id="tab-container" ng-init="tab=1">
-            <a href="#/" ng-click="tab=1">
-                <div id='tab-timer'class="tab-title" ng-class="{'active-tab':tab===1 }">
+        <div id="tab-container" ng-controller="tabController as tabs" ng-init="tabs.tab=1">
+            <a href="#/" ng-click="tabs.switch('toTrad')">
+                <div id='tab-timer'class="tab-title" ng-class="{'active-tab': tabs.tab ===1 }">
                     <h1 id="timer-text">Timer</h1>
                 </div>
             </a>
-            <a href="#/stopwatch" ng-click="tab = 2">
-                <div id="tab-stopwatch" class="tab-title" ng-class="{ 'active-tab': tab===2 }">
+            <a href="#/stopwatch" ng-click="tabs.switch('toPomo')">
+                <div id="tab-stopwatch" class="tab-title" ng-class="{ 'active-tab': tabs.tab ===2 }">
                     <h1 id="stopwatch-text">Stopwatch</h1>
                 </div>
             </a>
@@ -52,6 +52,7 @@
             <script type="text/javascript" src="scripts/app.js"></script>
             <script src="scripts/stopwatchController.js"></script>
             <script src="scripts/timerController.js"></script>
+            <script src="scripts/tabController.js"></script>
             <script src="bower_components/angular-route/angular-route.min.js"></script>
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
             <script type="text/javascript" src=scripts/script.js></script>

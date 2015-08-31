@@ -24,6 +24,8 @@
             $scope.showMinutes = true;
             $scope.showSeconds = true;
 
+            factory.awayFromTimer = true;
+
             $scope.addLapTime = function() {
               var totalTimeText;
               var lapNumber = $scope.lapTimes.length + 1;
@@ -188,6 +190,10 @@
                 }
 
                 function ticker() {
+                    if (factory.awayFromTimer === false) {
+                        console.log('whoops... resetting stopwatch cause you changed screens to avoide memory leak');
+                        $scope.reset();
+                    }
                     var timeoutID = window.setTimeout(onEachSecondDo, [1000]);
                 }
 

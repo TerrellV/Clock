@@ -24,7 +24,6 @@
 
         var hasBeenReset = false; // detect if app has been reset
 
-
         // ON CLICK OF START determine which to show
         $scope.start = function() {
           // if user is using traditional clock
@@ -224,6 +223,10 @@
             }
 
             function ticker() {
+                if (factory.awayFromTimer === true) {
+                    console.log('whoops... resetting timer cause you changed screens');
+                    $scope.reset();
+                }
                 var timeoutID = window.setTimeout(onEachSecondDo, [1000]);
             }
 
