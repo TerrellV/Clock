@@ -191,7 +191,7 @@
 
                 function ticker() {
                     if (factory.awayFromTimer === false) {
-                        console.log('whoops... resetting stopwatch cause you changed screens to avoide memory leak');
+                        console.log('whoops... resetting stopwatch cause you changed screens to avoid a memory leak');
                         $scope.reset();
                     }
                     var timeoutID = window.setTimeout(onEachSecondDo, [1000]);

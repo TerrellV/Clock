@@ -33,7 +33,6 @@
                 return multipliers;
             }
             factory.pomoCLockValues = function () {
-                console.log('new pomo clock values were set using factory info');
                 return newClockPomoVals;
             }
             // values for new stopwatch from scratch

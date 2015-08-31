@@ -311,7 +311,7 @@ input:focus {
   -o-transform: translateX(-50%);
   transform: translateX(-50%);
   width: 100%;
-  background-color: #1A1A1A; }
+  background-color: #333333; }
 
 #loading-inner {
   left: 0px;
@@ -554,14 +554,18 @@ input:focus {
   font-size: 20px;
   color: #CCCCCC;
   font-family: "Roboto",sans-serif;
-  font-weight: 300; }
+  font-weight: 300;
+  outline: none;
+  letter-spacing: 2px;
+  outline: none; }
+  .btn-bottom:hover {
+    font-weight: 400; }
 
 #btn-start {
   width: 100%;
   background-color: #1A1A1A;
   color: #CCCCCC;
-  font-family: "Roboto",sans-serif;
-  font-weight: 300; }
+  font-family: "Roboto",sans-serif; }
 
 #btn-resume {
   width: 50%;

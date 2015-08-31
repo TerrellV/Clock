@@ -310,7 +310,7 @@ input:focus {
 #loading-outer {
     @include center-me-horiz();
     width: 100%;
-    background-color: $black-back;
+    background-color: $black-one;
 }
 #loading-inner {
     left: 0px;
@@ -522,6 +522,12 @@ input:focus {
     color: $light-grey;
     font-family: "Roboto",sans-serif;
     font-weight: 300;
+    outline: none;
+    letter-spacing: 2px;
+    outline: none;
+    &:hover {
+        font-weight: 400;
+    }
 }
 
 #btn-start {
@@ -529,7 +535,6 @@ input:focus {
     background-color: $black-back;
     color: $light-grey;
     font-family: "Roboto",sans-serif;
-    font-weight: 300;
 }
 #btn-resume {
     width: 50%;

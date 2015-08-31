@@ -126,13 +126,14 @@
         }
         $scope.reset = function() {
             if( $scope.isActive === false ) { // if user is using pomo clock
-                $scope.playPauseAnimation = false;
+
                 $scope.clockContainer = false;
                 $scope.moveTimeContainer = {
-                    "top": "270px"
+                    "top": "290px"
                 }
                 $scope.moveTasksDown = false;
                 $scope.displayMinutes = 25;
+                $scope.displaySeconds = 0;
                 $scope.taskList = [];
                 $scope.taskInput = undefined;
                 $scope.showTasks = true;
@@ -141,11 +142,9 @@
                 $scope.given.hours = true;
                 $scope.given.seconds = true;
             } else {
-                $scope.paused = false;
                 $scope.clockContainer = false;
                 $scope.running = false;
                 $scope.startLoad = false;
-                $scope.playPauseAnimation = false;
                 $scope.displayHours = 0;
                 $scope.displayMinutes = 0;
                 $scope.displaySeconds = 0;
@@ -156,7 +155,10 @@
             }
             if ( paused === false ) {
                 paused = true;
+                console.log('pause = true which really just stops timer funciton');
             }
+            $scope.paused = false;
+            $scope.playPauseAnimation = false;
             $scope.bigClock = false;
             $scope.bigHandM = false;
             $scope.dontShowClockOptions = false;
@@ -166,6 +168,8 @@
         }
         // DEFINE : begin timmer
         $scope.startTime = function( timeValues ) {
+
+            paused = false;
 
             enteredProps = Object.getOwnPropertyNames( timeValues );
             var filteredProps = enteredProps.filter(function(prop) {
@@ -183,6 +187,8 @@
             $scope.displayMinutes = timeValues.minutes || 0;
             $scope.displaySeconds = timeValues.seconds || 0;
 
+
+
             if($scope.displayHours === 0 ) {
                 $scope.given.hours = true;
             }
@@ -195,6 +201,7 @@
             function onEachSecondDo() {
 
                 if ( paused ) {
+                    console.log('done');
                     return 'done'
                 }
 
@@ -224,7 +231,7 @@
 
             function ticker() {
                 if (factory.awayFromTimer === true) {
-                    console.log('whoops... resetting timer cause you changed screens');
+                    console.log('whoops... resetting timer cause you changed screens and we wouldnt want a memory leak would we?');
                     $scope.reset();
                 }
                 var timeoutID = window.setTimeout(onEachSecondDo, [1000]);
@@ -288,10 +295,10 @@
             $scope.taskTitle = 'Add a Task Below';
             if ( type === 'pomodoro' ){
                 $scope.clockContainer = {
-                    "top": "130px"
+                    "top": "150px"
                 };
                 $scope.moveTimeContainer = {
-                    "top": "270px"
+                    "top": "290px"
                 }
                 $scope.showTasks = true;
                 $scope.showTime = true;
