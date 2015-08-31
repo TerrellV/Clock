@@ -182,12 +182,9 @@
                 timeValues.totalMs += (timeValues[prop] * multipliers[prop]);
             });
 
-
             $scope.displayHours = timeValues.hours || 0;
             $scope.displayMinutes = timeValues.minutes || 0;
             $scope.displaySeconds = timeValues.seconds || 0;
-
-
 
             if($scope.displayHours === 0 ) {
                 $scope.given.hours = true;

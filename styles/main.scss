@@ -550,5 +550,28 @@ input:focus {
     background-color: $black-back;
 }
 
+#sig-container {
+    @include center-me-horiz();
+    bottom: 0px;
+    text-align: center;
+    #sig{
+        a:hover{
+            text-decoration: none;
+        }
+        p {
+            font-size: 18px;
+            font-family: "Roboto",sans-serif;
+            letter-spacing: 2px;
+            color: $light-grey;
+        }
+    }
+}
+
+@media (max-height:850px) {
+    #sig {
+        display: none;
+    }
+}
+
 @import 'animateNewton';
 @import 'stopwatch';

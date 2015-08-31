@@ -580,6 +580,27 @@ input:focus {
   width: 50%;
   background-color: #1A1A1A; }
 
+#sig-container {
+  position: absolute;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  -moz-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  -o-transform: translateX(-50%);
+  transform: translateX(-50%);
+  bottom: 0px;
+  text-align: center; }
+  #sig-container #sig a:hover {
+    text-decoration: none; }
+  #sig-container #sig p {
+    font-size: 18px;
+    font-family: "Roboto",sans-serif;
+    letter-spacing: 2px;
+    color: #CCCCCC; }
+
+@media (max-height: 850px) {
+  #sig {
+    display: none; } }
 @keyframes animateR {
   from {
     transform: translateY(-50%) rotate(0deg); }
