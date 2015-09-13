@@ -61,6 +61,21 @@
                 $('#ball-container-r').addClass('animated-right');
                 var newtonTimeout = window.setTimeout(factory.cloneBoth, 2000);
             }
+            factory.bindEmphasis = function(){
+                // animation for start button on initial load
+                $("#app").bind("mouseenter", function(){
+                    var s = $("#start-text");
+                    s.addClass("emphasize");
+                    var id = window.setTimeout(function(){
+                        s.removeClass("emphasize")
+                    }, 4000);
+                    factory.unBindEmphasis();
+                });
+            }
+            factory.unBindEmphasis = function(){
+                $("#app").unbind("mouseenter");
+            }
+            factory.switchCount = 0;
             return factory;
         };
 

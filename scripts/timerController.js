@@ -16,7 +16,10 @@
 
         var paused = false;
         var enteredProps;
-
+        // bind start emphasis on mouse enter...
+        if (factory.switchCount === 0 ) {
+            factory.bindEmphasis();
+        }
         var multipliers = factory.multipliers(); //from factory factory
 
         var notif = document.getElementById("chime");
@@ -348,6 +351,8 @@
                 "bottom": "100px"
             }
         }
+
+
         // when timer hits zero .... this function should be called to make sound
         function chime () {
             notif.play();

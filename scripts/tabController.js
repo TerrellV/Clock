@@ -7,7 +7,9 @@
             var vm = this;
 
             this.switch = function( tab ) {
-                if (tab === 'toPomo') {
+                factory.unBindEmphasis();
+                factory.switchCount+= (factory.switchCount > 0)? 0: 1;
+                if (tab === 'toStop') {
                     factory.awayFromTimer = true;
                     vm.tab = 2;
                 } else {

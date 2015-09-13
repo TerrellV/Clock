@@ -85,7 +85,9 @@
 
     <!-- bottom action buttons -->
     <div class="action-button">
-        <button ng-hide="hideStart" ng-click="start()" id="btn-start" type="button" name="button" class="btn-bottom">START</button>
+        <button ng-hide="hideStart" ng-click="start()" id="btn-start" type="button" name="button" class="btn-bottom">
+            <p id="start-text">START</p>
+        </button>
         <div ng-show="hideStart">
 
             <button ng-hide="paused" ng-click="pauseApp()" id="btn-pause" type="button" name="button" class="btn-bottom">PAUSE</button>

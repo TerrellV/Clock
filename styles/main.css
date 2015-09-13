@@ -24,6 +24,19 @@
     width: 0%; }
   to {
     width: 100%; } }
+@keyframes emphasizeStart {
+  from {
+    -webkit-transform: scale(1);
+    -moz-transform: scale(1);
+    -ms-transform: scale(1);
+    -o-transform: scale(1);
+    transform: scale(1); }
+  to {
+    -webkit-transform: scale(1.4);
+    -moz-transform: scale(1.4);
+    -ms-transform: scale(1.4);
+    -o-transform: scale(1.4);
+    transform: scale(1.4); } }
 /*
  * Background
 */
@@ -550,7 +563,6 @@ input:focus {
   position: absolute;
   bottom: 0px;
   border: 0px;
-  color: white;
   font-size: 20px;
   color: #CCCCCC;
   font-family: "Roboto",sans-serif;
@@ -566,6 +578,17 @@ input:focus {
   background-color: #1A1A1A;
   color: #CCCCCC;
   font-family: "Roboto",sans-serif; }
+  #btn-start p {
+    font-size: 20px;
+    color: #CCCCCC;
+    font-family: "Roboto",sans-serif;
+    font-weight: 300; }
+  #btn-start .emphasize {
+    -webkit-animation: emphasizeStart 1s ease-in-out 4 alternate;
+    -moz-animation: emphasizeStart 1s ease-in-out 4 alternate;
+    -ms-animation: emphasizeStart 1s ease-in-out 4 alternate;
+    -o-animation: emphasizeStart 1s ease-in-out 4 alternate;
+    animation: emphasizeStart 1s ease-in-out 4 alternate; }
 
 #btn-resume {
   width: 50%;

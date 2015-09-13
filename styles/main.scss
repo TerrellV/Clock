@@ -72,8 +72,8 @@ $dark-orange: #C45D3E;
     to {width: 100%}
 }
 @keyframes emphasizeStart {
-    from{ @include tramsform("scale(1)");}
-    to{ @include tramsform("scale(1.4)");}
+    from{ @include transform("scale(1)");}
+    to{ @include transform("scale(1.4)");}
 }
 
 /*
@@ -521,7 +521,6 @@ input:focus {
     position: absolute;
     bottom: 0px;
     border: 0px;
-    color: white;
     font-size: 20px;
     color: $light-grey;
     font-family: "Roboto",sans-serif;
@@ -535,6 +534,15 @@ input:focus {
 }
 
 #btn-start {
+    p {
+        font-size: 20px;
+        color: $light-grey;
+        font-family: "Roboto",sans-serif;
+        font-weight: 300;
+    }
+    .emphasize {
+        @include animation("emphasizeStart 1s ease-in-out 4 alternate");
+    }
     width: 100%;
     background-color: $black-back;
     color: $light-grey;
