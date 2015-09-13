@@ -579,6 +579,8 @@ input:focus {
   color: #CCCCCC;
   font-family: "Roboto",sans-serif; }
   #btn-start p {
+    letter-spacing: 2px;
+    margin: 0px;
     font-size: 20px;
     color: #CCCCCC;
     font-family: "Roboto",sans-serif;
