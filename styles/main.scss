@@ -71,6 +71,10 @@ $dark-orange: #C45D3E;
     from {width: 0%}
     to {width: 100%}
 }
+@keyframes emphasizeStart {
+    from{ @include tramsform("scale(1)");}
+    to{ @include tramsform("scale(1.4)");}
+}
 
 /*
  * Background
