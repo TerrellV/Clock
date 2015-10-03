@@ -1,6 +1,6 @@
 assets/AppDesign.ai
 
-node_modules/*
+node_modules/**
 
-bower_components/*
+bower_components/**
 !bower_components/angular-route/angular-route.min.js
