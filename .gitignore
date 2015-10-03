@@ -3,5 +3,6 @@ assets/AppDesign.ai
 node_modules/**
 
 bower_components/angular/*
-bower_components/angular-route/*
+bower_components/angular-route/**
+!bower-components/angular-route/
 !bower_components/angular-route/angular-route.min.js
