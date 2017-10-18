@@ -47,7 +47,7 @@ body {
  * App Container
 */
 #app {
-  background-color: #1A1A1A;
+  background: linear-gradient(153deg,rgb(26, 26, 26),rgb(43, 14, 2) 69%, rgb(26, 26, 26));
   height: 780px;
   width: 90%;
   max-width: 550px;

@@ -158,7 +158,6 @@
             }
             if ( paused === false ) {
                 paused = true;
-                console.log('pause = true which really just stops timer funciton');
             }
             $scope.paused = false;
             $scope.playPauseAnimation = false;
@@ -201,7 +200,6 @@
             function onEachSecondDo() {
 
                 if ( paused ) {
-                    console.log('done');
                     return 'done'
                 }
 
@@ -278,7 +276,6 @@
         $scope.updateTasks = function ( taskInput ) {
             if ( $scope.taskList.length >= 3) {
                 $scope.taskInput = undefined;
-                console.log('ERROR use only three tasks');
                 alert('Lets just stick to three tasks for now');
             } else if ( taskInput !== undefined ) {
                 $scope.taskList.push({'text': taskInput});

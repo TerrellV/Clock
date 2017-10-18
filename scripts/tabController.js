@@ -16,7 +16,6 @@
                     factory.awayFromTimer = false;
                     vm.tab = 1;
                 }
-                console.log( tab );
             }
         }
 })()
