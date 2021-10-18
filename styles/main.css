@@ -47,7 +47,7 @@ body {
  * App Container
 */
 #app {
-  background: background-color: #1A1A1A;
+  background-color: #1A1A1A;
   height: 780px;
   width: 90%;
   max-width: 550px;
