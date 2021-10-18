@@ -1,6 +1,6 @@
-#Clock
+# Clock
 
-### View a [live Demo](https://terrellv.github.io/Clock/#/stopwatch).
+### View a [live Demo](https://terrellv.github.io/Clock/).
 
 ## Description
 
@@ -13,10 +13,10 @@ This project was inspired by the [Pomodoro Clock Project](http://www.freecodecam
  * User may switch over to the stopwatch tab where they can not only track elapsed time, but also the elapsed time in relation to a previous moment. In other words, I added a "lap" button that tracks the time since you last pressed it.
  * All clocks can be paused, resumed and reset.
 
-##### View [Live Demo](http://mirprest.github.io/Clock/) hosted via Github Pages
+##### View a [live Demo](https://terrellv.github.io/Clock/#/stopwatch) hosted via Github Pages
 
 ## Animations
-I'm a sucker for animation. In terms of User Experience, I know there are times when animation is complete overkill. However, I still wanted to "see what I could do" specifically during the stopwatch timer. View it [Here](http://mirprest.github.io/Clock/#/stopwatch) This animation was interesting because it needed to constantly be reinvoked (played over and over again), which isn't built it in to css. When I first thought about it, I hoped to simply define the animation in keyframes and then set the iteration count to infinite. I quickly learned things didn't work like I expected. Starting two animations, one after the other, won't allow you to simply use infinite for the animation-iteration-count property.
+I'm a sucker for animation. In terms of User Experience, I know there are times when animation is complete overkill. However, I still wanted to "see what I could do" specifically during the stopwatch timer. View it [here](https://terrellv.github.io/Clock/#/stopwatch) This animation was interesting because it needed to constantly be reinvoked (played over and over again), which isn't built it in to css. When I first thought about it, I hoped to simply define the animation in keyframes and then set the iteration count to infinite. I quickly learned things didn't work like I expected. Starting two animations, one after the other, won't allow you to simply use infinite for the animation-iteration-count property.
 ##### The two options I came across: 
 1. Remove the class that has the animation defined, then after some delay (ex: 10 millisecond), add the class that defines the animation back on to the element.
 2. Clone the elements when the animation is finished essentially re initiating the animations already defined via css.
@@ -34,6 +34,4 @@ In regards to other animations, I began using keyframes but later chose transiti
  As this is my 3rd project, I am constantly looking to improve. I am open to and appreciate feedback. With that said, there are certain things, I have noted as "Will Improve Next Time" because the time spent refactoring the code may defeat the purpose. That is not to say I won't edit this project, its just something to consider. 
  
 #### Thank You
-If you read this far, Thank You for taking the time to view this project! It is very much appreciated. 
-
-##### View [Live Demo](http://mirprest.github.io/Clock/) hosted via Github Pages
+If you read this far, Thank You for taking the time to view this project! I appreciate you. 
