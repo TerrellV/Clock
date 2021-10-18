@@ -1,6 +1,6 @@
 #Clock
 
-### View a [Working Demo](http://mirprest.github.io/Clock/).
+### View a [live Demo](https://terrellv.github.io/Clock/#/stopwatch).
 
 ## Description
 
